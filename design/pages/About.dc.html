@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>About</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f4f3ee}
+*{box-sizing:border-box}
+a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
+.gw-root{--gw-display:'Bricolage Grotesque',system-ui,sans-serif;--gw-body:Nunito,system-ui,sans-serif;--gw-track:-0.02em;font-family:var(--gw-body);color:#1f2a2a;background:#f4f3ee;overflow:hidden}
+.gw-display{font-family:var(--gw-display,'Bricolage Grotesque',system-ui,sans-serif);letter-spacing:var(--gw-track,-0.02em)}
+.gw-wrap{max-width:1240px;margin:0 auto;padding-left:32px;padding-right:32px}
+.gw-eyebrow{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#257173}
+.gw-btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border:none;cursor:pointer;font-family:inherit;transition:transform .25s cubic-bezier(.3,1.6,.5,1),box-shadow .25s ease,background .2s ease}
+.gw-btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 0 -4px rgba(31,42,42,.18)}
+.gw-btn:active{transform:translateY(1px) scale(.98)}
+.gw-arrow{display:inline-block;transition:transform .25s ease}
+.gw-btn:hover .gw-arrow,.gw-card:hover .gw-arrow{transform:translateX(5px)}
+.gw-nav a.gw-link{position:relative;text-decoration:none;color:#1f2a2a}
+.gw-nav a.gw-link{transition:color .2s ease}.gw-nav a.gw-link:hover,.gw-nav a.gw-link.on{color:#257173}
+@keyframes gw-float{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-10px) rotate(var(--r,0deg))}}
+.gw-float{animation:gw-float 5s ease-in-out infinite}
+.gw-float.d2{animation-delay:-1.6s}.gw-float.d3{animation-delay:-3.2s}
+@keyframes gw-draw{from{stroke-dashoffset:400}to{stroke-dashoffset:0}}
+.gw-squiggle path{stroke-dasharray:400;animation:gw-draw 1.4s .4s cubic-bezier(.6,0,.2,1) both}
+@keyframes gw-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.gw-rise{animation:gw-rise .8s cubic-bezier(.2,.8,.2,1) both}
+.gw-rise.d1{animation-delay:.1s}.gw-rise.d2{animation-delay:.22s}.gw-rise.d3{animation-delay:.34s}.gw-rise.d4{animation-delay:.46s}
+@keyframes gw-pop{0%{opacity:0;transform:translateY(10px) scale(.94)}100%{opacity:1;transform:none}}
+.gw-pop{animation:gw-pop .5s cubic-bezier(.3,1.5,.5,1) both}
+.gw-pill{animation:gw-pop .45s cubic-bezier(.3,1.6,.5,1) both;transition:transform .2s ease}
+.gw-pill:hover{transform:translateY(-2px) rotate(-1.5deg)}
+.gw-card{transition:transform .4s cubic-bezier(.3,1.4,.5,1),box-shadow .3s ease}
+.gw-card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -30px rgba(31,42,42,.45)}
+.gw-card .gw-zoom{transition:transform .6s ease}
+.gw-card:hover .gw-zoom{transform:scale(1.06)}
+.gw-tilt{transition:transform .4s cubic-bezier(.3,1.4,.5,1),box-shadow .3s ease}
+.gw-tilt:hover{transform:perspective(900px) rotateX(3deg) rotateY(-4deg) translateY(-6px);box-shadow:0 30px 50px -30px rgba(31,42,42,.45)}
+.gw-chip{border:1.5px solid #d8d4c8;background:#fff;color:#1f2a2a;border-radius:999px;padding:10px 18px;font-family:inherit;font-weight:800;font-size:15px;cursor:pointer;transition:transform .2s cubic-bezier(.3,1.6,.5,1),background .2s ease,border-color .2s ease}
+.gw-chip:hover{transform:translateY(-2px)}
+.gw-chip.on{background:#1f2a2a;color:#f4f3ee;border-color:#1f2a2a}
+.gw-tab{border:none;background:transparent;text-align:left;cursor:pointer;font-family:inherit;color:#1f2a2a;transition:background .25s ease,transform .25s ease}
+.gw-tab:hover{transform:translateX(4px)}
+.gw-acc{border:none;background:transparent;width:100%;text-align:left;cursor:pointer;font-family:inherit;color:#1f2a2a}
+.gw-acc .gw-plus{transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.gw-acc.on .gw-plus{transform:rotate(45deg)}
+.gw-flip{perspective:1200px}
+.gw-flip-in{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.3,1.2,.4,1);transform-style:preserve-3d}
+.gw-flip:hover .gw-flip-in,.gw-flip:focus-within .gw-flip-in{transform:rotateY(180deg)}
+.gw-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:28px;overflow:hidden}
+.gw-back{transform:rotateY(180deg)}
+.gw-step{transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.gw-step:hover{transform:translateY(-6px)}
+@keyframes gw-path{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.gw-path{transform-origin:left;animation:gw-path 1.6s .3s cubic-bezier(.6,0,.2,1) both}
+@keyframes gw-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.gw-marquee{animation:gw-marquee 32s linear infinite}
+.gw-marquee-wrap:hover .gw-marquee{animation-play-state:paused}
+.gw-input{width:100%;font-family:inherit;font-size:17px;color:#1f2a2a;background:#fff;border:1.5px solid #d8d4c8;border-radius:16px;padding:16px 18px;transition:border-color .2s ease,box-shadow .2s ease}
+.gw-input:focus{outline:none;border-color:#33999b;box-shadow:0 0 0 4px rgba(51,153,155,.18)}
+.gw-jump span{display:inline-block;transition:transform .35s cubic-bezier(.3,1.8,.5,1),color .2s ease}
+.gw-jump span:hover{transform:translateY(-14px) rotate(-4deg);color:#ffe885}
+.gw-foot a{color:#f4f3ee;text-decoration:none;opacity:.8;transition:opacity .2s ease}
+.gw-foot a:hover{opacity:1;color:#ffe885}
+@media (max-width:820px){.gw-stack{grid-template-columns:minmax(0,1fr)!important}.gw-hide-sm{display:none!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.gw-dd{position:relative}
+.gw-dd-btn{background:none;border:none;font:inherit;color:#1f2a2a;cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:6px}
+.gw-dd-btn .gw-caret{display:inline-block;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.gw-dd:hover .gw-caret,.gw-dd:focus-within .gw-caret{transform:rotate(180deg)}
+.gw-dd-menu{position:absolute;left:50%;top:100%;padding-top:14px;z-index:50;opacity:0;visibility:hidden;transform:translate(-50%,8px);transition:opacity .2s ease,transform .25s cubic-bezier(.3,1.4,.5,1),visibility .2s}
+.gw-dd:hover .gw-dd-menu,.gw-dd:focus-within .gw-dd-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.gw-dd-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:14px;color:#1f2a2a;transition:background .2s ease,transform .2s ease}
+.gw-dd-item:hover{background:#f4f3ee;transform:translateX(3px);color:#1f2a2a}
+.gw-dd-btn:hover,.gw-dd-btn.on{color:#257173}
+
+</style>
+</helmet>
+<div class="gw-root">
+<dc-import name="Nav" active="about" hint-size="100%,88px"></dc-import>
+
+<!-- HERO -->
+<section class="gw-wrap" style="padding-top: 48px; padding-bottom: 72px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+  <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 26px">
+    <span class="gw-rise" style="align-self: flex-start; background: #ffe885; padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 800">All-women founded</span>
+    <h1 class="gw-display gw-rise d1" style="margin: 0; font-size: clamp(2.8rem, 6.4vw, 5.4rem); line-height: .96; font-weight: 800">We help people grow wings, <span style="color: #257173">and enjoy the flight.</span></h1>
+    <p class="gw-rise d2" style="margin: 0; font-size: 20px; line-height: 1.55; max-width: 560px; color: #3c4848">Grow Wings is an L&amp;D consulting company building campuses and workplaces where people grow, lead and thrive, through programs designed for lasting behaviour change.</p>
+    <div class="gw-rise d3" style="display: flex; flex-wrap: wrap; gap: 12px">
+      <a href="Contact.dc.html" class="gw-btn" style="background: #33999b; color: #fff; padding: 16px 26px; border-radius: 999px; font-weight: 800; font-size: 17px">Work with us <span class="gw-arrow">→</span></a>
+      <a href="#team" class="gw-btn" style="background: #fff; color: #1f2a2a; padding: 16px 26px; border-radius: 999px; font-weight: 800; font-size: 17px; box-shadow: inset 0 0 0 2px #1f2a2a">Meet the team</a>
+    </div>
+  </div>
+  <div style="flex: 1 1 380px; min-width: 0; position: relative; height: 460px">
+    <img src="/_blob/c3a5643f775c334e2699380a4bdea118" alt="Large group photo after a workshop" style="position: absolute; inset: 0 0 60px 0; width: 100%; height: calc(100% - 60px); object-fit: cover; border-radius: 32px">
+    <div class="gw-float" style="--r: -3deg; position: absolute; left: 24px; right: 24px; bottom: 0; background: #fff; border-radius: 22px; padding: 20px 24px; display: flex; justify-content: space-around; gap: 12px; box-shadow: 0 20px 40px -24px rgba(31,42,42,.4)">
+      <span style="display: flex; flex-direction: column; align-items: center"><span class="gw-display" style="font-size: 34px; font-weight: 800">11+</span><span style="font-size: 13px; font-weight: 800; color: #4f5b5b">cities</span></span>
+      <span style="display: flex; flex-direction: column; align-items: center"><span class="gw-display" style="font-size: 34px; font-weight: 800">20+</span><span style="font-size: 13px; font-weight: 800; color: #4f5b5b">colleges</span></span>
+      <span style="display: flex; flex-direction: column; align-items: center"><span class="gw-display" style="font-size: 34px; font-weight: 800">4.9/5</span><span style="font-size: 13px; font-weight: 800; color: #4f5b5b">feedback</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section aria-label="Industries" style="border-top: 1.5px solid #e2ded3; border-bottom: 1.5px solid #e2ded3; background: #fff; padding: 22px 0">
+  <div class="gw-marquee-wrap" style="overflow: hidden">
+    <div class="gw-marquee" style="display: flex; gap: 14px; width: max-content">
+      <sc-for list="{{industries}}" as="i" hint-placeholder-count="16">
+        <span style="flex: none; background: {{i.bg}}; padding: 10px 18px; border-radius: 999px; font-size: 16px; font-weight: 800">{{i.label}}</span>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- I A T -->
+<section class="gw-wrap" style="padding-top: 110px; padding-bottom: 110px; display: flex; flex-direction: column; gap: 40px">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+    <h2 class="gw-display" style="margin: 0; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; font-weight: 800">Information → Action →<br><span style="color: #257173">Transformation.</span></h2>
+    <p style="margin: 0; font-size: 18px; line-height: 1.5; max-width: 380px; color: #3c4848">A before-and-after that teams can see, <br>feel and celebrate.</p>
+  </div>
+  <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))">
+    <div class="gw-step" style="background: #fff; border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 14px"><span class="gw-display" style="width: 72px; height: 72px; border-radius: 22px; background: #d3eaea; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 800">I</span><span class="gw-display" style="font-size: 28px; font-weight: 800">Information</span><span style="font-size: 16px; line-height: 1.55; color: #3c4848">Insights that open minds and challenge assumptions.</span></div>
+    <div class="gw-step" style="background: #fff; border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 14px"><span class="gw-display" style="width: 72px; height: 72px; border-radius: 22px; background: #ffe885; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 800">A</span><span class="gw-display" style="font-size: 28px; font-weight: 800">Action</span><span style="font-size: 16px; line-height: 1.55; color: #3c4848">Insight turned into real-world practice, through repeated hands-on activities.</span></div>
+    <div class="gw-step" style="background: #fff; border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 14px"><span class="gw-display" style="width: 72px; height: 72px; border-radius: 22px; background: #33999b; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 800">T</span><span class="gw-display" style="font-size: 28px; font-weight: 800">Transformation</span><span style="font-size: 16px; line-height: 1.55; color: #3c4848">We stay with people until their behaviour and outcomes visibly shift.</span></div>
+  </div>
+</section>
+
+<!-- 3D -->
+<section style="background: #1f2a2a; color: #f4f3ee">
+  <div class="gw-wrap" style="padding-top: 110px; padding-bottom: 110px; display: flex; flex-direction: column; gap: 44px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <span class="gw-eyebrow" style="color: #8fd3d4">Our philosophy</span>
+        <h2 class="gw-display" style="margin: 0; font-size: clamp(2.6rem, 6vw, 5rem); line-height: .95; font-weight: 800">Keep it 3D.</h2>
+      </div>
+      <p style="margin: 0; font-size: 18px; line-height: 1.5; max-width: 420px; color: #c9d1d0">Build the mind, nurture the heart, free the voice. <em>Side effects may include confidence, clarity and self-belief.</em></p>
+    </div>
+    <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))">
+      <div class="gw-tilt" style="background: #b9e8ed; color: #1f2a2a; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column"><img src="/_blob/6e6dde74e8f3f46b0f777b17c3c85009" alt="" style="width: 100%; height: 180px; object-fit: cover; display: block"><span style="padding: 26px; display: flex; flex-direction: column; gap: 8px"><span class="gw-display" style="font-size: 38px; font-weight: 800">Mind</span><span style="font-size: 18px; font-weight: 700; font-style: italic">Think clearer. Decide smarter.</span></span></div>
+      <div class="gw-tilt" style="background: #EDA3D0; color: #1f2a2a; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column"><img src="/_blob/5faba6bb5e3137c18b093e588c024695" alt="" style="width: 100%; height: 180px; object-fit: cover; display: block"><span style="padding: 26px; display: flex; flex-direction: column; gap: 8px"><span class="gw-display" style="font-size: 38px; font-weight: 800">Heart</span><span style="font-size: 18px; font-weight: 700; font-style: italic">Connect deeper. Lead kinder.</span></span></div>
+      <div class="gw-tilt" style="background: #bba4ed; color: #1f2a2a; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column"><img src="/_blob/d091fd927b07e6747a87453adb7f012e" alt="" style="width: 100%; height: 180px; object-fit: cover; display: block"><span style="padding: 26px; display: flex; flex-direction: column; gap: 8px"><span class="gw-display" style="font-size: 38px; font-weight: 800">Voice</span><span style="font-size: 18px; font-weight: 700; font-style: italic">Speak boldly. Show up fully.</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="gw-wrap" style="padding-top: 110px; padding-bottom: 110px; display: flex; flex-direction: column; gap: 40px">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+    <h2 class="gw-display" style="margin: 0; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; font-weight: 800">Four women.<br><span style="color: #257173">Four superpowers.</span></h2>
+    <p style="margin: 0; font-size: 18px; line-height: 1.5; max-width: 380px; color: #3c4848">One shared belief: growth should feel exciting, not exhausting. Hover a card for the fun fact.</p>
+  </div>
+  <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))">
+    <sc-for list="{{team}}" as="t" hint-placeholder-count="4">
+      <div class="gw-flip" tabindex="0" style="height: 460px; outline: none">
+        <div class="gw-flip-in">
+          <div class="gw-face" style="background: #2f3b3b; display: flex; flex-direction: column">
+            <img src="{{t.img}}" alt="Portrait of {{t.name}}" style="width: 100%; height: 320px; object-fit: cover; display: block">
+            <span style="background: {{t.color}}; flex: 1; padding: 20px 22px; display: flex; flex-direction: column; gap: 4px">
+              <span class="gw-display" style="font-size: 24px; font-weight: 800">{{t.name}}</span>
+              <span style="font-size: 14px; font-weight: 800">{{t.role}}</span>
+            </span>
+          </div>
+          <div class="gw-face gw-back" style="background: #fff; padding: 28px; display: flex; flex-direction: column; gap: 14px; box-shadow: inset 0 0 0 3px {{t.color}}">
+            <span class="gw-display" style="font-size: 22px; font-weight: 800">{{t.name}}</span>
+            <span style="font-size: 13px; font-weight: 800; color: #257173">{{t.cred}}</span>
+            <span style="font-size: 15px; line-height: 1.55">{{t.bio}}</span>
+            <span style="margin-top: auto; background: {{t.color}}; border-radius: 16px; padding: 14px 16px; font-size: 15px; font-weight: 700; line-height: 1.45">Fun fact: {{t.fun}}</span>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section style="background: #33999b; color: #fff">
+  <div class="gw-wrap" style="padding-top: 100px; padding-bottom: 100px; display: grid; gap: 40px; align-items: end; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))">
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <span class="gw-eyebrow" style="color: #fff">The Grow Wings promise</span>
+      <h2 class="gw-display" style="margin: 0; font-size: clamp(2.4rem, 5.4vw, 4.4rem); line-height: .98; font-weight: 800">From Fortune 500 boardrooms to MBA campuses.</h2>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end">
+      <a href="Contact.dc.html" class="gw-btn" style="background: #fff; color: #1f2a2a; padding: 18px 30px; border-radius: 999px; font-weight: 800; font-size: 18px">Let's build something <span class="gw-arrow">→</span></a>
+      <a href="Campus.dc.html" class="gw-btn" style="background: transparent; color: #fff; padding: 18px 30px; border-radius: 999px; font-weight: 800; font-size: 18px; box-shadow: inset 0 0 0 2px #fff">Explore programs</a>
+    </div>
+  </div>
+</section>
+<dc-import name="Footer" hint-size="100%,640px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1440, "height": 4000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var names = ['FMCG', 'BFSI', 'Manufacturing', 'IT & Consulting', 'Real Estate', 'PSU & Power', 'HR & Recruitment', 'Any industry, really'];
+    var tints = ['#d3eaea', '#fff6cc', '#f4f3ee', '#d3eaea'];
+    var industries = names.concat(names).map(function (n, i) { return { label: n, bg: tints[i % 4] }; });
+    var team = [
+      { name: 'Dr. Poonam Ojha', role: 'Behavioural Coach', color: '#d3eaea', img: '/_blob/43ef85a338077b41a6a5531866f11fcf',
+        cred: 'ACC-certified coach · PhD in English · 25+ years',
+        bio: 'Specialises in communication and emotional intelligence. Has delivered programs for Ernst & Young, Tyson Foods, Karle Infra and Neebal Technologies.',
+        fun: 'Known for advice that changes how people see work, life and leadership.' },
+      { name: 'Sharanya Ojha', role: 'Soft Skills Trainer & Instructional Designer', color: '#fff6cc', img: '/_blob/8ff399bd4ae1324b325f02ca5dafc79d',
+        cred: 'Certified Learning Consultant',
+        bio: 'Designed fluency modules for EY, trained 800+ government school teachers with TRTI Maharashtra, and built campus-to-corporate journeys for ICFAI and Tyson Foods.',
+        fun: 'Turns passing ideas into training games, fast.' },
+      { name: 'Kritika Singh', role: 'Content Strategist & Soft Skills Trainer', color: '#d3eaea', img: '/_blob/f31330d3551b9fb8f3c641465b8aa0af',
+        cred: 'Practice-driven learning',
+        bio: 'Has run sessions for freshers at EY, retired professionals at Bank of Baroda and trans youth at PeriFerry, tailoring each to its learning goals.',
+        fun: 'Turns random ideas into engaging content.' },
+      { name: 'Shreny Mutha', role: 'Trainer Network Lead & Facilitator', color: '#fff6cc', img: '/_blob/538c44d1c265a5e86433d0ebc87f2f9c',
+        cred: 'NABET certified · International SQA certified',
+        bio: 'Leads a national network of 100+ trainers and owns delivery quality, with deep experience in youth development and institution-wide programs.',
+        fun: 'A natural connector who builds collaborations quickly.' }
+    ];
+    return { industries: industries, team: team };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "About.dc.html": {
+      "expand": "fill",
+      "h": 4000,
+      "is_interactive": true,
+      "title": "About",
+      "w": 1440,
+      "x": 9120,
+      "y": 0
+    },
+    "Blog.dc.html": {
+      "expand": "fill",
+      "h": 3000,
+      "is_interactive": true,
+      "title": "Blog",
+      "w": 1440,
+      "x": 7600,
+      "y": 0
+    },
+    "Campus.dc.html": {
+      "expand": "fill",
+      "h": 5120,
+      "is_interactive": true,
+      "title": "Campus",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    },
+    "CaseStudies.dc.html": {
+      "expand": "fill",
+      "h": 4100,
+      "is_interactive": true,
+      "title": "Case studies",
+      "w": 1440,
+      "x": 6080,
+      "y": 0
+    },
+    "Contact.dc.html": {
+      "expand": "fill",
+      "h": 2200,
+      "is_interactive": true,
+      "title": "Contact",
+      "w": 1440,
+      "x": 10640,
+      "y": 0
+    },
+    "Corporates.dc.html": {
+      "expand": "fill",
+      "h": 3900,
+      "is_interactive": true,
+      "title": "Corporates",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "Footer.dc.html": {
+      "h": 640,
+      "title": "Footer (shared)",
+      "w": 1440,
+      "x": 1520,
+      "y": -1400
+    },
+    "Guides.dc.html": {
+      "expand": "fill",
+      "h": 3800,
+      "is_interactive": true,
+      "title": "Guides & prints",
+      "w": 1440,
+      "x": 12160,
+      "y": 0
+    },
+    "Loader.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "title": "Loader",
+      "w": 1440,
+      "x": 3040,
+      "y": -1400
+    },
+    "Main.dc.html": {
+      "expand": "fill",
+      "h": 4300,
+      "is_interactive": true,
+      "title": "Home",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Nav.dc.html": {
+      "h": 88,
+      "title": "Nav (shared)",
+      "w": 1440,
+      "x": 0,
+      "y": -1400
+    },
+    "YoungMinds.dc.html": {
+      "expand": "fill",
+      "h": 3900,
+      "is_interactive": true,
+      "title": "SkillsIRL",
+      "w": 1440,
+      "x": 4560,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-11-01T05:50:00Z",
+    "v": 1
+  },
+  "designSystems": [
+    {
+      "artifact": "https://claude.ai/code/artifact/3e65922b-240d-4929-855e-7f641735f6da",
+      "copiedAt": "2026-11-01T06:02:00Z",
+      "namespace": "grow-wings-x-aquila",
+      "title": "Grow Wings x Aquila",
+      "version": "1792058612-bab0"
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  },
+  "noteOrder": [
+    "pagesTitle",
+    "compTitle"
+  ],
+  "notes": {
+    "compTitle": {
+      "kind": "title1",
+      "maxW": 4480,
+      "text": "Shared components",
+      "w": 240,
+      "x": 0,
+      "y": -1700
+    },
+    "pagesTitle": {
+      "kind": "title1",
+      "maxW": 8000,
+      "text": "Pages",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Corporates.dc.html",
+    "Campus.dc.html",
+    "YoungMinds.dc.html",
+    "CaseStudies.dc.html",
+    "Blog.dc.html",
+    "About.dc.html",
+    "Contact.dc.html",
+    "Guides.dc.html",
+    "Nav.dc.html",
+    "Footer.dc.html",
+    "Loader.dc.html"
+  ],
+  "pages": [],
+  "title": "Grow Wings website"
+}

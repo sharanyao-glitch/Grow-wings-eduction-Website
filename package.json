@@ -1,0 +1,17 @@
+{
+  "name": "grow-wings-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Grow Wings marketing website, built from the Grow Wings canvas design.",
+  "type": "module",
+  "scripts": {
+    "build": "node build/build.mjs",
+    "serve": "node build/serve.mjs",
+    "dev": "node build/build.mjs && node build/serve.mjs"
+  },
+  "devDependencies": {
+    "linkedom": "0.18.5",
+    "preact": "10.24.3",
+    "preact-render-to-string": "6.5.11"
+  }
+}
