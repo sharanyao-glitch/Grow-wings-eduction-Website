@@ -12,14 +12,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,700&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0}
+.gw-burger{display:none;width:48px;height:48px;border-radius:999px;border:none;background:#1f2a2a;color:#f4f3ee;cursor:pointer;align-items:center;justify-content:center;padding:0;flex:none}
+.gw-burger-lines{position:relative;width:20px;height:14px;display:block}
+.gw-burger-lines span{position:absolute;left:0;width:20px;height:2.5px;border-radius:2px;background:currentColor;transition:transform .3s cubic-bezier(.3,1.4,.5,1),opacity .2s ease,top .3s ease}
+.gw-burger-lines span:nth-child(1){top:0}.gw-burger-lines span:nth-child(2){top:6px}.gw-burger-lines span:nth-child(3){top:12px}
+.gw-burger.open .gw-burger-lines span:nth-child(1){top:6px;transform:rotate(45deg)}
+.gw-burger.open .gw-burger-lines span:nth-child(2){opacity:0}
+.gw-burger.open .gw-burger-lines span:nth-child(3){top:6px;transform:rotate(-45deg)}
+.gw-mnav{display:none}
+.gw-navbar{position:relative;z-index:60}
+@media (max-width:900px){
+.gw-nav-desk{display:none!important}
+.gw-burger{display:inline-flex}
+.gw-mnav.open{display:block;max-height:calc(100vh - 88px);max-height:calc(100dvh - 88px);overflow-y:auto;border-top:1.5px solid #e7e4da}
+.gw-navbar{position:sticky;top:0;background:#f4f3ee;box-shadow:0 1px 0 #e7e4da}
+.gw-nav{padding-top:12px!important;padding-bottom:12px!important;padding-left:20px!important;padding-right:20px!important}
+}
+@keyframes gw-mnav-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.gw-mnav-panel{animation:gw-mnav-in .3s cubic-bezier(.3,1.2,.5,1) both}
+.gw-mnav a{color:#1f2a2a;text-decoration:none}
+.gw-mnav-link{display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 4px;font-size:20px;font-weight:800;border-bottom:1.5px solid #e7e4da}
+.gw-mnav-link.on{color:#257173}
+.gw-mnav-sub{display:flex;align-items:center;gap:12px;min-height:48px;padding:6px 4px 6px 4px;font-size:16px;font-weight:700}
+.gw-mnav-sub:active,.gw-mnav-link:active{background:#ebe9e1}
 </style>
 </helmet>
+<div class="gw-navbar">
 <header class="gw-nav" style="font-family: var(--gw-body, Nunito, system-ui, sans-serif); color: #1f2a2a; max-width: 1240px; margin: 0 auto; padding: 20px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
   <a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1f2a2a">
     <img src="/_blob/ebc6bd594dc2b99c923776fd8ef47649" alt="" style="width: 42px; height: 42px; border-radius: 12px; display: block">
     <span class="gw-display" style="font-family: var(--gw-display, 'Bricolage Grotesque', sans-serif); font-size: 24px; font-weight: 800; letter-spacing: -0.02em">Grow Wings</span>
   </a>
-  <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 26px; font-size: 16px; font-weight: 700">
+  <nav aria-label="Main" class="gw-nav-desk" style="display: flex; flex-wrap: wrap; align-items: center; gap: 26px; font-size: 16px; font-weight: 700">
     <a href="Corporates.dc.html" class="gw-link {{on.corporates}}">Corporates</a>
     <a href="Campus.dc.html" class="gw-link {{on.campus}}">Campus</a>
     <div class="gw-dd">
@@ -44,18 +68,55 @@ body{margin:0}
     <a href="About.dc.html" class="gw-link {{on.about}}">About</a>
     <a href="Contact.dc.html" class="gw-btn" style="background: #1f2a2a; color: #f4f3ee; padding: 12px 20px; border-radius: 999px; font-weight: 800">Let's talk <span class="gw-arrow">→</span></a>
   </nav>
+  <button type="button" class="gw-burger {{burgerCls}}" onClick="{{toggle}}" aria-expanded="{{open}}" aria-controls="gw-mnav" aria-label="{{burgerLabel}}"><span class="gw-burger-lines" aria-hidden="true"><span></span><span></span><span></span></span></button>
 </header>
+<div id="gw-mnav" class="gw-mnav {{panelCls}}" style="font-family: var(--gw-body, Nunito, system-ui, sans-serif); color: #1f2a2a">
+  <nav aria-label="Mobile" class="gw-mnav-panel" style="max-width: 1240px; margin: 0 auto; padding: 4px 20px 28px; display: flex; flex-direction: column">
+    <a href="Corporates.dc.html" class="gw-mnav-link {{on.corporates}}" onClick="{{close}}">Corporates <span aria-hidden="true">→</span></a>
+    <a href="Campus.dc.html" class="gw-mnav-link {{on.campus}}" onClick="{{close}}">Campus <span aria-hidden="true">→</span></a>
+    <div style="padding: 14px 4px 6px; border-bottom: 1.5px solid #e7e4da">
+      <span class="gw-eyebrow" style="font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #257173">SkillsIRL</span>
+      <a href="YoungMinds.dc.html" class="gw-mnav-sub" onClick="{{close}}"><span aria-hidden="true" style="width: 34px; height: 34px; flex: none; border-radius: 10px; background: #d3eaea; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px">13+</span>Teens &amp; young adults</a>
+      <a href="YoungMinds.dc.html#spoken" class="gw-mnav-sub" onClick="{{close}}"><span aria-hidden="true" style="width: 34px; height: 34px; flex: none; border-radius: 10px; background: #fff6cc; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px">Aa</span>Spoken English</a>
+    </div>
+    <div style="padding: 14px 4px 6px; border-bottom: 1.5px solid #e7e4da">
+      <span class="gw-eyebrow" style="font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #257173">Resources</span>
+      <a href="CaseStudies.dc.html" class="gw-mnav-sub" onClick="{{close}}"><span aria-hidden="true" style="width: 34px; height: 34px; flex: none; border-radius: 10px; background: #d3eaea; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px">01</span>Case studies</a>
+      <a href="Blog.dc.html" class="gw-mnav-sub" onClick="{{close}}"><span aria-hidden="true" style="width: 34px; height: 34px; flex: none; border-radius: 10px; background: #fff6cc; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px">02</span>Blog</a>
+      <a href="Guides.dc.html" class="gw-mnav-sub" onClick="{{close}}"><span aria-hidden="true" style="width: 34px; height: 34px; flex: none; border-radius: 10px; background: #d3eaea; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px">03</span>Guides &amp; prints</a>
+    </div>
+    <a href="About.dc.html" class="gw-mnav-link {{on.about}}" onClick="{{close}}">About <span aria-hidden="true">→</span></a>
+    <a href="Contact.dc.html" class="gw-btn" onClick="{{close}}" style="margin-top: 22px; justify-content: center; background: #1f2a2a; color: #f4f3ee; padding: 16px 20px; border-radius: 999px; font-weight: 800; font-size: 17px">Let's talk <span class="gw-arrow">→</span></a>
+  </nav>
+</div>
+</div>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"active": {"editor": "enum", "options": ["home", "corporates", "campus", "youngminds", "cases", "blog", "guides", "prints", "about"], "default": "home"}, "$preview": {"width": 1440, "height": 88}}'>
 class Component extends DCLogic {
+  componentDidMount() {
+    var self = this;
+    this._key = function (e) { if (e.key === 'Escape' && self.state && self.state.open) self.setState({ open: false }); };
+    document.addEventListener('keydown', this._key);
+  }
+  componentWillUnmount() { document.removeEventListener('keydown', this._key); }
   renderVals() {
     var a = this.props.active || '';
     var keys = ['corporates', 'campus', 'youngminds', 'resources', 'about'];
     if (['cases', 'blog', 'guides', 'prints'].indexOf(a) >= 0) a = 'resources';
     var on = {};
     keys.forEach(function (k) { on[k] = k === a ? 'on' : ''; });
-    return { on: on };
+    var self = this;
+    var open = !!(this.state && this.state.open);
+    return {
+      on: on,
+      open: open ? 'true' : 'false',
+      burgerCls: open ? 'open' : '',
+      panelCls: open ? 'open' : '',
+      burgerLabel: open ? 'Close menu' : 'Open menu',
+      toggle: function () { self.setState({ open: !open }); },
+      close: function () { self.setState({ open: false }); }
+    };
   }
 }
 

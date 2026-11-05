@@ -92,7 +92,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
     <span class="gw-eyebrow gw-rise">The Grow Wings journal</span>
     <h1 class="gw-display gw-rise d1" style="margin: 0; font-size: clamp(3rem, 7vw, 6rem); line-height: .92; font-weight: 800">Notes on<br>growing people.</h1>
   </div>
-  <div class="gw-rise d2" style="flex: 0 1 360px; min-width: 260px; position: relative">
+  <div class="gw-rise d2" style="flex: 0 1 360px; min-width: min(260px, 100%); position: relative">
     <label for="gw-search" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search articles</label>
     <input id="gw-search" class="gw-input" type="search" placeholder="Search articles" value="{{query}}" onChange="{{onSearch}}" style="border-radius: 999px; padding-left: 22px">
   </div>
@@ -128,7 +128,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 
 <!-- GRID -->
 <section class="gw-wrap" style="padding-bottom: 110px">
-  <div style="display: grid; gap: 28px 18px; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr))">
+  <div style="display: grid; gap: 28px 18px; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr))">
     <sc-for list="{{posts}}" as="p" hint-placeholder-count="4">
       <a href="#" class="gw-card gw-pop" style="text-decoration: none; color: #1f2a2a; display: flex; flex-direction: column; gap: 18px; border-radius: 28px; animation-delay: {{p.delay}}">
         <span style="position: relative; display: block; height: 240px; border-radius: 28px; overflow: hidden; background: {{p.color}}">
@@ -159,7 +159,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
       <span class="gw-display" style="font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1">One good idea, once a month.</span>
       <span style="font-size: 17px; line-height: 1.55; color: #c9d1d0">New articles, case studies and workshop games in your inbox. No spam.</span>
     </div>
-    <form style="flex: 0 1 440px; min-width: 260px; display: flex; gap: 8px; background: #2b3838; border-radius: 999px; padding: 6px">
+    <form style="flex: 0 1 440px; min-width: min(260px, 100%); display: flex; gap: 8px; background: #2b3838; border-radius: 999px; padding: 6px">
       <label for="gw-blog-news" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Email address</label>
       <input id="gw-blog-news" type="email" placeholder="you@company.com" style="flex: 1; min-width: 0; background: transparent; border: none; color: #f4f3ee; font-family: inherit; font-size: 16px; padding: 12px 18px; outline: none">
       <button type="button" class="gw-btn" style="background: #33999b; color: #fff; border-radius: 999px; padding: 12px 22px; font-weight: 800; font-size: 16px">Subscribe</button>

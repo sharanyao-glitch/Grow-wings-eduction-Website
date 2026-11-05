@@ -127,6 +127,8 @@ const loaderCss = loader.styles
   })
   .join('\n');
 
+const MOBILE_CSS = fs.readFileSync(path.join(SRC, 'mobile.css'), 'utf8');
+
 const LOADER_CHROME = `
 #gw-loader{position:fixed;inset:0;z-index:1000;transition:opacity .55s ease,visibility .55s ease}
 html.gw-loaded #gw-loader{opacity:0;visibility:hidden;pointer-events:none}
@@ -137,6 +139,8 @@ const HEAD_SCRIPT = `try{if(sessionStorage.getItem('gw-seen')){document.document
 
 const BOOT_SCRIPT = `
 document.addEventListener('submit',function(e){e.preventDefault()});
+document.addEventListener('click',function(e){var f=e.target.closest&&e.target.closest('.gw-flip');if(!f||e.target.closest('a,button'))return;f.classList.toggle('gw-flipped')});
+document.addEventListener('keydown',function(e){if(e.key!=='Enter'&&e.key!==' ')return;var f=document.activeElement;if(f&&f.classList&&f.classList.contains('gw-flip')){e.preventDefault();f.classList.toggle('gw-flipped')}});
 try{DC.boot()}catch(e){console.error(e)}
 (function(){var d=document.documentElement,t0=Date.now();
 function done(){setTimeout(function(){d.classList.add('gw-loaded')},Math.max(0,1100-(Date.now()-t0)))}
@@ -197,6 +201,7 @@ ${links.join('\n')}
 ${styles.join('\n\n')}
 ${loaderCss}
 ${LOADER_CHROME}
+${MOBILE_CSS}
 </style>
 <noscript><style>#gw-loader{display:none}</style></noscript>
 </head>

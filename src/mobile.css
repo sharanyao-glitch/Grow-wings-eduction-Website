@@ -1,0 +1,76 @@
+/* ------------------------------------------------------------------
+   Grow Wings: phone and touch refinements.
+   Added by the build after the design's own styles. The design writes
+   most layout as inline styles, so overrides here use !important and
+   match those inline values by attribute.
+   ------------------------------------------------------------------ */
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+img { max-width: 100%; }
+a, button, [role="button"], .gw-flip { -webkit-tap-highlight-color: rgba(51, 153, 155, .18); }
+
+/* The page root clips sideways overflow. `clip` does that without
+   creating a scroll box, so the header can stay pinned (position: sticky). */
+#app > div { overflow-x: clip !important; overflow-y: visible !important; }
+
+/* Anchor links land below the pinned header */
+[id] { scroll-margin-top: 84px; }
+
+/* Flip cards: tap to flip on touch screens (hover is unreliable there) */
+@media (hover: none) {
+  .gw-flip:hover .gw-flip-in,
+  .gw-flip:focus-within .gw-flip-in { transform: none; }
+}
+.gw-flip { cursor: pointer; }
+.gw-flip.gw-flipped .gw-flip-in { transform: rotateY(180deg) !important; }
+
+/* ---------------- tablets and down ---------------- */
+@media (max-width: 900px) {
+  /* Long words in big headlines wrap instead of overflowing */
+  h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
+}
+
+/* ---------------- phones ---------------- */
+@media (max-width: 640px) {
+  /* Side gutters: 32px -> 20px */
+  .gw-wrap,
+  [style*="max-width: 1240px"] { padding-left: 20px !important; padding-right: 20px !important; }
+  .gw-mnav-panel { padding-left: 20px !important; padding-right: 20px !important; }
+
+  /* Section rhythm: 100-110px -> 64px */
+  [style*="padding-top: 100px"], [style*="padding-top: 110px"], [style*="padding-top: 96px"] { padding-top: 64px !important; }
+  [style*="padding-bottom: 100px"], [style*="padding-bottom: 110px"], [style*="padding-bottom: 96px"] { padding-bottom: 64px !important; }
+  [style*="padding-bottom: 80px"] { padding-bottom: 56px !important; }
+  [style*="padding: 110px"], [style*="padding: 90px"] { padding-top: 64px !important; padding-bottom: 64px !important; }
+  [style*="padding: 110px 32px 40px"] { padding-bottom: 24px !important; }
+  [style*="padding: 88px"] { padding-top: 56px !important; }
+  section[style*="padding: 48px 32px 72px"] { padding-top: 24px !important; padding-bottom: 48px !important; }
+
+  /* Big inner padding on cards */
+  [style*="padding: 44px"] { padding: 24px !important; }
+
+  /* Large gaps between stacked columns */
+  [style*="gap: 48px"] { gap: 32px !important; }
+
+  /* Form fields: 16px+ stops iOS from zooming in on focus */
+  input, textarea, select { font-size: 16px !important; }
+
+  /* Comfortable tap targets */
+  .gw-foot a { display: inline-block; padding-top: 7px; padding-bottom: 7px; }
+  .gw-chip { min-height: 44px; }
+
+  /* Buttons in a row fill the width neatly when they wrap */
+  .gw-btn { justify-content: center; }
+
+  /* Pop-up forms: tighter, and skip the decorative illustration so the form shows sooner */
+  .gw-modal { max-height: calc(100dvh - 24px) !important; border-radius: 24px !important; }
+  .gw-modal > div:first-of-type { padding: 28px 24px !important; gap: 14px !important; flex-basis: 100% !important; }
+  .gw-modal > div:first-of-type > [aria-hidden="true"] { display: none !important; }
+  .gw-modal > div:first-of-type .gw-display { font-size: 28px !important; }
+}
+
+@media (max-width: 380px) {
+  .gw-wrap,
+  [style*="max-width: 1240px"] { padding-left: 16px !important; padding-right: 16px !important; }
+}

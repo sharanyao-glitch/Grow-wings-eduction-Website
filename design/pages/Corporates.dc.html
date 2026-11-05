@@ -163,7 +163,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
     </div>
     <div style="position: relative">
       <div class="gw-path gw-hide-sm" aria-hidden="true" style="position: absolute; left: 8%; right: 8%; top: 38px; height: 3px; background: repeating-linear-gradient(90deg, #33999b 0 14px, transparent 14px 24px)"></div>
-      <div style="position: relative; display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))">
+      <div style="position: relative; display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr))">
         <div class="gw-step" style="display: flex; flex-direction: column; gap: 14px">
           <span class="gw-display" style="width: 78px; height: 78px; border-radius: 50%; background: #33999b; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 800">01</span>
           <span class="gw-display" style="font-size: 26px; font-weight: 700">HR &amp; leadership</span>
@@ -208,7 +208,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 
 <!-- CTA -->
 <section style="background: #33999b; color: #fff">
-  <div class="gw-wrap" style="padding-top: 100px; padding-bottom: 100px; display: grid; gap: 40px; align-items: end; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))">
+  <div class="gw-wrap" style="padding-top: 100px; padding-bottom: 100px; display: grid; gap: 40px; align-items: end; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr))">
     <div style="display: flex; flex-direction: column; gap: 14px">
       <h2 class="gw-display" style="margin: 0; font-size: clamp(2.6rem, 6vw, 5rem); line-height: .95; font-weight: 800">Ready to power up your people?</h2>
       <p style="margin: 0; font-size: 19px; line-height: 1.5; max-width: 520px">Share your team, goals and timeline. We'll design the program around them.</p>
@@ -265,7 +265,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
               <input id="bro-org" class="gw-input" type="text" autocomplete="organization" placeholder="{{bro.orgPh}}" value="{{bro.f.org}}" onChange="{{bro.set.org}}" aria-invalid="{{bro.inv.org}}" style="border-color: {{bro.bc.org}}">
               <sc-if value="{{bro.show.org}}" hint-placeholder-val="{{false}}"><span class="gw-field-err" role="alert">{{bro.err.org}}</span></sc-if>
             </div>
-            <div style="display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr))">
+            <div style="display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr))">
               <div style="display: flex; flex-direction: column; gap: 6px">
                 <label for="bro-email" style="font-size: 14px; font-weight: 800">Work email</label>
                 <input id="bro-email" class="gw-input" type="email" autocomplete="email" placeholder="you@company.com" value="{{bro.f.email}}" onChange="{{bro.set.email}}" aria-invalid="{{bro.inv.email}}" style="border-color: {{bro.bc.email}}">

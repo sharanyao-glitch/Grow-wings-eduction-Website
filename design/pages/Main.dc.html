@@ -181,7 +181,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 <!-- LOGOS -->
 <section aria-label="Clients" style="border-top: 1.5px solid #E7E4DA; border-bottom: 1.5px solid #E7E4DA; padding: 26px 0; background: #fff">
   <div class="gw-marquee-wrap" style="overflow: hidden; display: flex; align-items: center; gap: 40px">
-    <span style="flex: none; padding-left: 32px; font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #6b7676">In rooms at</span>
+    <span style="flex: none; position: relative; z-index: 1; align-self: stretch; display: flex; align-items: center; background: #fff; box-shadow: 18px 0 18px #fff; padding-left: 32px; padding-right: 8px; font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #6b7676">In rooms at</span>
     <div class="gw-marquee" style="display: flex; flex: none; gap: 64px; padding-right: 64px; white-space: nowrap">
       <sc-for list="{{logos}}" as="l" hint-placeholder-count="12">
         <span class="gw-display gw-logo" style="font-size: 26px; font-weight: 700; color: #9aa3a3">{{l}}</span>
@@ -223,7 +223,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 <!-- DOORS -->
 <section id="doors" style="max-width: 1240px; margin: 0 auto; padding: 90px 32px; display: flex; flex-direction: column; gap: 40px">
   <h2 class="gw-display" style="margin: 0; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; font-weight: 800">Pick your door.</h2>
-  <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))">
+  <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr))">
     <a href="Corporates.dc.html" class="gw-door" style="text-decoration: none; color: #1f2a2a; background: #fff; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column">
       <span style="display: block; height: 240px; overflow: hidden"><img class="gw-door-img" src="/_blob/d5d897609f7d373bc2db2ff61049478f" alt="Team workshop at a corporate client" style="width: 100%; height: 100%; object-fit: cover; display: block"></span>
       <span style="display: flex; flex-direction: column; gap: 10px; padding: 26px 28px 30px">
@@ -260,7 +260,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
     </div>
     <div style="position: relative">
       <div class="gw-path" aria-hidden="true" style="position: absolute; left: 6%; right: 6%; top: 38px; height: 3px; background: repeating-linear-gradient(90deg, #33999b 0 14px, transparent 14px 24px)"></div>
-      <div style="position: relative; display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))">
+      <div style="position: relative; display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr))">
         <div class="gw-step" style="display: flex; flex-direction: column; gap: 14px">
           <span class="gw-display" style="width: 78px; height: 78px; border-radius: 50%; background: #33999b; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 800">01</span>
           <span class="gw-display" style="font-size: 26px; font-weight: 700">Awareness</span>
@@ -310,7 +310,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 
 <!-- CTA -->
 <section id="talk" style="background: #33999b; color: #fff">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 110px 32px; display: grid; gap: 40px; align-items: end; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 110px 32px; display: grid; gap: 40px; align-items: end; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr))">
     <div style="display: flex; flex-direction: column; gap: 16px">
       <h2 class="gw-display" style="margin: 0; font-size: clamp(2.8rem, 6.5vw, 5.5rem); line-height: .95; font-weight: 800">Don't be shy,<br>drop a hi!</h2>
       <p style="margin: 0; font-size: 19px; line-height: 1.5; max-width: 520px">Tell us about your team, your students or your goals. We'll suggest the right program within 24 hours.</p>

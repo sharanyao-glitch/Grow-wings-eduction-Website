@@ -111,7 +111,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 </section>
 
 <section class="gw-wrap" style="padding-bottom: 110px">
-  <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr))">
+  <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr))">
     <sc-for list="{{guides}}" as="g" hint-placeholder-count="6">
       <article class="gw-card gw-pop" style="background: #fff; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; animation-delay: {{g.delay}}">
         <div style="position: relative; height: 200px; background: {{g.bg}}; overflow: hidden">
@@ -143,7 +143,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
     <h2 class="gw-display" style="margin: 0; font-size: clamp(2.2rem, 4.4vw, 3.6rem); line-height: 1; font-weight: 800">Prints: the power-up cards.</h2>
     <p style="margin: 0; font-size: 17px; line-height: 1.5; max-width: 360px; color: #3c4848">Hover or tap a card to see its back.</p>
   </div>
-  <div style="display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))">
+  <div style="display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr))">
     <sc-for list="{{cards}}" as="c" hint-placeholder-count="3">
       <div style="display: flex; flex-direction: column; gap: 16px">
         <div class="gw-flip" tabindex="0" style="height: 500px; outline: none">
@@ -176,7 +176,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 <!-- MORE PRINTS -->
 <section class="gw-wrap" style="padding-bottom: 110px; display: flex; flex-direction: column; gap: 32px">
   <h2 class="gw-display" style="margin: 0; font-size: clamp(2.2rem, 4.4vw, 3.6rem); line-height: 1; font-weight: 800">More to print.</h2>
-  <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))">
+  <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr))">
     <article class="gw-card" style="background: #fff; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column">
       <div style="height: 240px; overflow: hidden"><img class="gw-zoom" src="/_blob/5888cba9108951e089116f9debd5573e" alt="Mood-o-meter poster covered in sticky notes" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
       <div style="padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 8px"><span class="gw-eyebrow">Poster · A3</span><span class="gw-display" style="font-size: 24px; font-weight: 800">Mood'o'meter</span><span style="font-size: 16px; line-height: 1.55; color: #4f5b5b">Pin it on the wall and let people stick a note on how they feel at the start and end of a session.</span></div>

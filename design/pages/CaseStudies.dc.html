@@ -95,7 +95,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 
 <!-- PICKER -->
 <section class="gw-wrap" style="padding-bottom: 32px">
-  <div role="group" aria-label="Choose a case study" style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))">
+  <div role="group" aria-label="Choose a case study" style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr))">
     <sc-for list="{{cases}}" as="c" hint-placeholder-count="2">
       <button type="button" class="gw-card" onClick="{{c.pick}}" aria-pressed="{{c.on}}" style="text-align: left; cursor: pointer; border: none; font-family: inherit; color: #1f2a2a; background: {{c.cardBg}}; border-radius: 28px; overflow: hidden; display: flex; align-items: stretch; padding: 0; box-shadow: {{c.ring}}">
         <span style="width: 38%; min-height: 170px; overflow: hidden; flex: none; display: block"><img class="gw-zoom" src="{{c.img}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></span>
@@ -126,7 +126,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
         <div style="border-radius: 32px; overflow: hidden; min-height: 300px"><img src="{{c.img}}" alt="{{c.imgAlt}}" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
       </div>
 
-      <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))">
+      <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr))">
         <sc-for list="{{c.numbers}}" as="n" hint-placeholder-count="3">
           <div class="gw-card" style="background: {{n.bg}}; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 6px"><span class="gw-display" style="font-size: 52px; font-weight: 800; line-height: 1">{{n.big}}</span><span style="font-size: 16px; font-weight: 700">{{n.label}}</span></div>
         </sc-for>
@@ -137,7 +137,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
           <span class="gw-display" style="font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 800; line-height: 1">How it unfolded</span>
           <span style="font-size: 15px; font-weight: 700; color: #9aa6a5">Step {{stepNum}} of 5 · tap a step</span>
         </div>
-        <div role="tablist" aria-label="Process steps" style="display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))">
+        <div role="tablist" aria-label="Process steps" style="display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr))">
           <sc-for list="{{c.steps}}" as="s" hint-placeholder-count="5">
             <button type="button" role="tab" class="gw-tab" onClick="{{s.pick}}" aria-selected="{{s.on}}" style="display: flex; flex-direction: column; gap: 8px; padding: 18px; border-radius: 20px; background: {{s.bg}}; color: {{s.fg}}">
               <span class="gw-display" style="font-size: 26px; font-weight: 800">{{s.num}}</span>
@@ -179,7 +179,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 <!-- MORE -->
 <section class="gw-wrap" style="padding-bottom: 110px; display: flex; flex-direction: column; gap: 32px">
   <h2 class="gw-display" style="margin: 0; font-size: clamp(2.2rem, 4.4vw, 3.4rem); line-height: 1; font-weight: 800">More stories, being written.</h2>
-  <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))">
+  <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr))">
     <div class="gw-tilt" style="background: #fff; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 10px; border: 2px dashed #d8d4c8"><span class="gw-eyebrow">Corporate · EY</span><span class="gw-display" style="font-size: 24px; font-weight: 800; line-height: 1.1">Fluency modules for EY</span><span style="font-size: 15px; color: #6b7676">[Add brief, process and results]</span></div>
     <div class="gw-tilt" style="background: #fff; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 10px; border: 2px dashed #d8d4c8"><span class="gw-eyebrow">Corporate · Tyson Foods</span><span class="gw-display" style="font-size: 24px; font-weight: 800; line-height: 1.1">Campus-to-corporate journeys</span><span style="font-size: 15px; color: #6b7676">[Add brief, process and results]</span></div>
     <div class="gw-tilt" style="background: #fff; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 10px; border: 2px dashed #d8d4c8"><span class="gw-eyebrow">Education · TRTI Maharashtra</span><span class="gw-display" style="font-size: 24px; font-weight: 800; line-height: 1.1">800+ government school teachers trained</span><span style="font-size: 15px; color: #6b7676">[Add brief, process and results]</span></div>
@@ -188,7 +188,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 
 <!-- CTA -->
 <section style="background: #33999b; color: #fff">
-  <div class="gw-wrap" style="padding-top: 100px; padding-bottom: 100px; display: grid; gap: 40px; align-items: end; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))">
+  <div class="gw-wrap" style="padding-top: 100px; padding-bottom: 100px; display: grid; gap: 40px; align-items: end; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr))">
     <h2 class="gw-display" style="margin: 0; font-size: clamp(2.6rem, 6vw, 5rem); line-height: .95; font-weight: 800">Want a case study built around you?</h2>
     <div style="display: flex; justify-content: flex-end"><a href="Contact.dc.html" class="gw-btn" style="background: #fff; color: #1f2a2a; padding: 18px 30px; border-radius: 999px; font-weight: 800; font-size: 18px">Start a conversation <span class="gw-arrow">→</span></a></div>
   </div>
