@@ -26,6 +26,15 @@ npm run serve    # preview at http://localhost:5173
 
 Each page is pre-rendered to plain HTML (fast and search-engine friendly), then made interactive in the browser (program tabs, photo stack, brochure and contact forms, blog search).
 
+## SEO
+
+The build adds these for `https://growwings.in` (set `SITE_URL` in `build/build.mjs` to change the domain):
+
+- A title, description, canonical link, Open Graph and Twitter tags on each page. Descriptions come from each page's first long paragraph unless the page sets `description` in `PAGES`.
+- A link-preview image, `src/og-image.png` (1200×630). It is built from `build/og-image.html` by `build/og-image.mjs`.
+- Structured data on the home page: the organization's name, contact details and Pune address.
+- `sitemap.xml` and `robots.txt`. After going live, submit `https://growwings.in/sitemap.xml` in Google Search Console.
+
 ## Still to wire up
 
 - Forms (contact, brochure download, newsletter) are front-end only. They validate and show a "thanks" state but don't send anything yet. Hook them to a backend or a form service (Formspree, etc.).
