@@ -227,6 +227,7 @@ for (const [name, page] of Object.entries(PAGES)) {
 <title>${escAttr(title)}</title>
 <meta name="description" content="${escAttr(description)}">
 <link rel="canonical" href="${url}">
+<meta name="google-site-verification" content="ho0oP5tCxttpoMLmcglhdeXGKLLZ3xTuKCxdbhe10Ec">
 <meta property="og:site_name" content="${SITE_NAME}">
 <meta property="og:locale" content="en_IN">
 <meta property="og:type" content="website">
