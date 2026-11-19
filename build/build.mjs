@@ -41,7 +41,9 @@ const PAGES = {
   Guides: { file: 'guides.html', title: 'Guides & prints', priority: 0.6 },
 };
 
-const pageUrl = (file) => (file === 'index.html' ? `${SITE_URL}/` : `${SITE_URL}/${file}`);
+// Clean URLs (no .html): Vercel serves /corporates from corporates.html (cleanUrls in vercel.json).
+const pagePath = (file) => (file === 'index.html' ? '/' : `/${file.replace(/\.html$/, '')}`);
+const pageUrl = (file) => (file === 'index.html' ? `${SITE_URL}/` : `${SITE_URL}${pagePath(file)}`);
 
 // Structured data for search engines (home page): who Grow Wings is and how to reach them.
 const ORG_JSONLD = {
@@ -80,7 +82,7 @@ function rewrite(text) {
     })
     .replace(/\b([A-Za-z]+)\.dc\.html/g, (m, name) => {
       if (!PAGES[name]) throw new Error(`Link to unknown page ${m}`);
-      return PAGES[name].file;
+      return pagePath(PAGES[name].file);
     });
 }
 

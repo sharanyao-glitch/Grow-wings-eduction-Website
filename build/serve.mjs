@@ -14,6 +14,7 @@ const TYPES = {
 http.createServer((req, res) => {
   let p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
   if (p.endsWith('/')) p += 'index.html';
+  else if (!path.extname(p)) p += '.html'; // clean URLs, like Vercel's cleanUrls
   const file = path.join(ROOT, path.normalize(p));
   if (!file.startsWith(ROOT)) { res.writeHead(403).end(); return; }
   fs.readFile(file, (err, data) => {
