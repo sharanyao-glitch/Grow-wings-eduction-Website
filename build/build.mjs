@@ -39,6 +39,17 @@ const PAGES = {
   About: { file: 'about.html', title: 'About us', priority: 0.7 },
   Contact: { file: 'contact.html', title: 'Contact', priority: 0.8 },
   Guides: { file: 'guides.html', title: 'Guides & prints', priority: 0.6 },
+
+  // ---- Blog articles ----
+  // One entry per post. Copy BlogSpeakingUp.dc.html to make a new one (see design/BLOG-TEMPLATE.md).
+  // `article` turns on the article extras: og:type article, Article + Breadcrumb + FAQ structured data.
+  BlogSpeakingUp: {
+    file: 'blog/the-art-of-speaking-up.html',
+    title: 'The art of speaking up: why most professionals stay silent',
+    description: 'Why capable professionals stay quiet in meetings, what it costs them, and five small habits that help you find your voice at work.',
+    priority: 0.6,
+    article: { published: '2026-11-25', section: 'Communication', image: 'd091fd927b07e6747a87453adb7f012e' },
+  },
 };
 
 // Clean URLs (no .html): Vercel serves /corporates from corporates.html (cleanUrls in vercel.json).
@@ -78,7 +89,7 @@ function rewrite(text) {
   return text
     .replace(/\/_blob\/([a-f0-9]{32})/g, (m, id) => {
       if (!images[id]) throw new Error(`Missing image for blob ${id}`);
-      return `assets/img/${images[id]}`;
+      return `/assets/img/${images[id]}`;
     })
     .replace(/\b([A-Za-z]+)\.dc\.html/g, (m, name) => {
       if (!PAGES[name]) throw new Error(`Link to unknown page ${m}`);
@@ -150,6 +161,56 @@ function describe(html) {
   return `${SITE_NAME}: life skills training for teams, campuses and young minds.`;
 }
 
+// ---------------------------------------------------------------- articles
+
+function decodeText(s) {
+  return s.replace(/<[^>]+>/g, '').replace(/&#39;|&rsquo;/g, '’').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+}
+
+// FAQ pairs come from the rendered page: elements marked data-faq="q" and data-faq="a", in order.
+function faqsFrom(html) {
+  const qs = [...html.matchAll(/<[a-z]+\b[^>]*data-faq="q"[^>]*>([\s\S]*?)<\/[a-z]+>/g)].map((m) => decodeText(m[1]));
+  const as = [...html.matchAll(/<[a-z]+\b[^>]*data-faq="a"[^>]*>([\s\S]*?)<\/[a-z]+>/g)].map((m) => decodeText(m[1]));
+  return qs.map((q, i) => ({ q, a: as[i] })).filter((f) => f.q && f.a);
+}
+
+function articleJsonLd(page, title, description, url, html) {
+  const a = page.article;
+  const image = a.image && images[a.image] ? `${SITE_URL}/assets/img/${images[a.image]}` : `${SITE_URL}/${OG_IMAGE.file}`;
+  const graph = [
+    {
+      '@type': 'BlogPosting',
+      '@id': `${url}#article`,
+      headline: page.title,
+      description,
+      image,
+      datePublished: a.published,
+      dateModified: a.modified || a.published,
+      articleSection: a.section,
+      inLanguage: 'en-IN',
+      mainEntityOfPage: url,
+      author: { '@type': 'Organization', name: `The ${SITE_NAME} team`, url: `${SITE_URL}/` },
+      publisher: { '@type': 'Organization', name: SITE_NAME, logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/img/ebc6bd594dc2b99c923776fd8ef47649.png` } },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
+        { '@type': 'ListItem', position: 3, name: page.title, item: url },
+      ],
+    },
+  ];
+  const faqs = faqsFrom(html);
+  if (faqs.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    });
+  }
+  return { '@context': 'https://schema.org', '@graph': graph };
+}
+
 // ---------------------------------------------------------------- loader
 
 const loader = parseDc(LOADER);
@@ -193,7 +254,7 @@ fs.copyFileSync(path.join(ROOT, 'node_modules', 'preact', 'dist', 'preact.min.js
 fs.copyFileSync(path.join(SRC, 'dc-runtime.js'), path.join(OUT, 'assets', 'js', 'dc-runtime.js'));
 fs.copyFileSync(path.join(SRC, 'og-image.png'), path.join(OUT, OG_IMAGE.file));
 
-const favicon = 'assets/img/ebc6bd594dc2b99c923776fd8ef47649.png';
+const favicon = '/assets/img/ebc6bd594dc2b99c923776fd8ef47649.png';
 
 for (const [name, page] of Object.entries(PAGES)) {
   const dc = load(name);
@@ -209,8 +270,11 @@ for (const [name, page] of Object.entries(PAGES)) {
   const description = page.description || describe(html);
   const url = pageUrl(page.file);
   const ogImage = `${SITE_URL}/${OG_IMAGE.file}`;
-  const jsonLd = name === 'Main'
-    ? `\n<script type="application/ld+json">${JSON.stringify(ORG_JSONLD).replace(/</g, '\\u003c')}</script>`
+  const ld = name === 'Main' ? ORG_JSONLD : page.article ? articleJsonLd(page, title, description, url, html) : null;
+  const jsonLd = ld ? `\n<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>` : '';
+  const ogType = page.article ? 'article' : 'website';
+  const articleMeta = page.article
+    ? `\n<meta property="article:published_time" content="${page.article.published}">\n<meta property="article:section" content="${escAttr(page.article.section)}">`
     : '';
 
   const templates = parts
@@ -232,7 +296,7 @@ for (const [name, page] of Object.entries(PAGES)) {
 <meta name="google-site-verification" content="ho0oP5tCxttpoMLmcglhdeXGKLLZ3xTuKCxdbhe10Ec">
 <meta property="og:site_name" content="${SITE_NAME}">
 <meta property="og:locale" content="en_IN">
-<meta property="og:type" content="website">
+<meta property="og:type" content="${ogType}">${articleMeta}
 <meta property="og:url" content="${url}">
 <meta property="og:title" content="${escAttr(title)}">
 <meta property="og:description" content="${escAttr(description)}">
@@ -263,12 +327,13 @@ ${loader.template}
 </div>
 <div id="app" data-root="${name}" data-props="${escAttr(JSON.stringify(dc.defaults))}">${html}</div>
 ${templates}
-<script src="assets/js/preact.min.js"></script>
-<script src="assets/js/dc-runtime.js"></script>
+<script src="/assets/js/preact.min.js"></script>
+<script src="/assets/js/dc-runtime.js"></script>
 <script>${BOOT_SCRIPT}</script>
 </body>
 </html>
 `;
+  fs.mkdirSync(path.dirname(path.join(OUT, page.file)), { recursive: true });
   fs.writeFileSync(path.join(OUT, page.file), doc);
   console.log(`  ${page.file.padEnd(18)} ${(doc.length / 1024).toFixed(0).padStart(4)} KB  ${title}`);
 }

@@ -104,6 +104,15 @@
       "w": 1440,
       "x": 4560,
       "y": 0
+    },
+    "BlogSpeakingUp.dc.html": {
+      "expand": "fill",
+      "h": 7200,
+      "is_interactive": true,
+      "title": "Blog article (template)",
+      "w": 1440,
+      "x": 13840,
+      "y": 0
     }
   },
   "createdOnFiles": {

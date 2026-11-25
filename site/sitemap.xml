@@ -2,47 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://growwings.in/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://growwings.in/corporates</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://growwings.in/campus</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://growwings.in/skills-irl</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://growwings.in/case-studies</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://growwings.in/blog</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://growwings.in/about</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://growwings.in/contact</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://growwings.in/guides</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://growwings.in/blog/the-art-of-speaking-up</loc>
+    <lastmod>2026-11-25</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>

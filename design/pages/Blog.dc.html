@@ -130,7 +130,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 <section class="gw-wrap" style="padding-bottom: 110px">
   <div style="display: grid; gap: 28px 18px; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr))">
     <sc-for list="{{posts}}" as="p" hint-placeholder-count="4">
-      <a href="#" class="gw-card gw-pop" style="text-decoration: none; color: #1f2a2a; display: flex; flex-direction: column; gap: 18px; border-radius: 28px; animation-delay: {{p.delay}}">
+      <a href="{{p.href}}" class="gw-card gw-pop" style="text-decoration: none; color: #1f2a2a; display: flex; flex-direction: column; gap: 18px; border-radius: 28px; animation-delay: {{p.delay}}">
         <span style="position: relative; display: block; height: 240px; border-radius: 28px; overflow: hidden; background: {{p.color}}">
           <span class="gw-zoom gw-display" aria-hidden="true" style="position: absolute; right: -10px; bottom: -40px; font-size: 220px; font-weight: 800; line-height: 1; color: rgba(31,42,42,.12)">{{p.num}}</span>
           <span class="gw-display" style="position: absolute; left: 24px; top: 22px; right: 24px; font-size: 26px; font-weight: 800; line-height: 1.05">{{p.hook}}</span>
@@ -180,7 +180,7 @@ class Component extends DCLogic {
     var self = this;
     var colors = { All: '#1f2a2a', Communication: '#d3eaea', Leadership: '#ffe885', Campus: '#ffffff', Mindset: '#e8e4d9' };
     var all = [
-      { title: 'The art of speaking up: why most professionals stay silent', hook: 'Why do capable people go quiet in meetings?', cat: 'Communication',
+      { title: 'The art of speaking up: why most professionals stay silent', hook: 'Why do capable people go quiet in meetings?', cat: 'Communication', href: 'BlogSpeakingUp.dc.html',
         excerpt: 'Capable professionals hold back ideas in meetings every day. Here’s the psychology behind that silence.' },
       { title: 'From manager to leader: the one shift that changes everything', hook: 'Promoted for skill. Now what?', cat: 'Leadership',
         excerpt: 'Managers are often promoted for technical skill. One mindset shift separates good managers from great leaders.' },
@@ -197,7 +197,7 @@ class Component extends DCLogic {
       return okCat && okQ;
     });
     var posts = list.map(function (p, i) {
-      return Object.assign({}, p, { color: colors[p.cat], num: '0' + (all.indexOf(p) + 1), delay: (i * 0.07) + 's' });
+      return Object.assign({}, p, { href: p.href || '#', color: colors[p.cat], num: '0' + (all.indexOf(p) + 1), delay: (i * 0.07) + 's' });
     });
     var names = ['All', 'Communication', 'Leadership', 'Campus', 'Mindset'];
     var filters = names.map(function (n) {
