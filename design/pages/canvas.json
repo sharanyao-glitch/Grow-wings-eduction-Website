@@ -113,6 +113,33 @@
       "w": 1440,
       "x": 13840,
       "y": 0
+    },
+    "BlogManagerToLeader.dc.html": {
+      "expand": "fill",
+      "h": 7200,
+      "is_interactive": true,
+      "title": "Blog: Manager to leader",
+      "w": 1440,
+      "x": 15520,
+      "y": 0
+    },
+    "BlogPlacementReady.dc.html": {
+      "expand": "fill",
+      "h": 7200,
+      "is_interactive": true,
+      "title": "Blog: Placement ready",
+      "w": 1440,
+      "x": 17200,
+      "y": 0
+    },
+    "BlogEmotionalIntelligence.dc.html": {
+      "expand": "fill",
+      "h": 7200,
+      "is_interactive": true,
+      "title": "Blog: Emotional intelligence",
+      "w": 1440,
+      "x": 18880,
+      "y": 0
     }
   },
   "createdOnFiles": {

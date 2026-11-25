@@ -50,6 +50,27 @@ const PAGES = {
     priority: 0.6,
     article: { published: '2026-11-25', section: 'Communication', image: 'd091fd927b07e6747a87453adb7f012e' },
   },
+  BlogManagerToLeader: {
+    file: 'blog/manager-to-leader.html',
+    title: 'From manager to leader: the one shift that changes everything',
+    description: 'Most managers are promoted for being great at the work. The one shift that separates good managers from great leaders, and how to start making it.',
+    priority: 0.6,
+    article: { published: '2026-11-25', section: 'Leadership', image: '6e6dde74e8f3f46b0f777b17c3c85009' },
+  },
+  BlogPlacementReady: {
+    file: 'blog/placement-ready.html',
+    title: 'Placement ready: why your story matters as much as your marks',
+    description: 'Your degree shows what you know; interviews also want your story. How students can prepare to speak with confidence before placement season.',
+    priority: 0.6,
+    article: { published: '2026-11-25', section: 'Campus', image: '4966d1c19c7f3a07f17ab9ceea91b355' },
+  },
+  BlogEmotionalIntelligence: {
+    file: 'blog/emotional-intelligence-at-work.html',
+    title: 'Emotional intelligence at work: the real superpower',
+    description: 'What emotional intelligence really means at work, why it matters more as AI grows, and five everyday habits to build it.',
+    priority: 0.6,
+    article: { published: '2026-11-25', section: 'Mindset', image: '5faba6bb5e3137c18b093e588c024695' },
+  },
 };
 
 // Clean URLs (no .html): Vercel serves /corporates from corporates.html (cleanUrls in vercel.json).
