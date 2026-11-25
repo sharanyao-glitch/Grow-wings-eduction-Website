@@ -118,12 +118,12 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 <!-- PROGRAMS -->
 <section id="programs" class="gw-wrap" style="padding-top: 40px; padding-bottom: 110px; display: flex; flex-direction: column; gap: 40px">
   <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
-    <h2 class="gw-display" style="margin: 0; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; font-weight: 800">Four programs.<br><span style="color: #257173">Every career stage.</span></h2>
+    <h2 class="gw-display" style="margin: 0; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; font-weight: 800">Five programs.<br><span style="color: #257173">Every career stage.</span></h2>
     <p style="margin: 0; font-size: 18px; line-height: 1.5; max-width: 380px; color: #3c4848">Each one is tuned to your team size, industry and goals.</p>
   </div>
   <div class="gw-stack" style="display: grid; gap: 18px; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr)">
     <div style="display: flex; flex-direction: column; gap: 10px">
-      <sc-for list="{{programs}}" as="p" hint-placeholder-count="4">
+      <sc-for list="{{programs}}" as="p" hint-placeholder-count="5">
         <button type="button" class="gw-tab" onClick="{{p.pick}}" aria-pressed="{{p.on}}" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 24px; border-radius: 22px; background: {{p.tabBg}}">
           <span style="display: flex; flex-direction: column; gap: 4px">
             <span class="gw-display" style="font-size: 30px; font-weight: 800">{{p.name}}</span>
@@ -140,6 +140,9 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
           <span class="gw-display" style="font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: .95; font-weight: 800">{{p.name}}</span>
           <span style="font-size: 22px; line-height: 1.4; font-weight: 700; max-width: 520px">{{p.line}}</span>
           <span style="font-size: 17px; line-height: 1.55; max-width: 560px">{{p.about}}</span>
+          <sc-if value="{{p.aquila}}" hint-placeholder-val="{{false}}">
+            <span style="font-size: 16px; line-height: 1.5; font-weight: 700">Co-created with <a href="https://www.aquilalearning.in/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-underline-offset: 3px">Aquila Learning</a>.</span>
+          </sc-if>
           <span style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto">
             <sc-for list="{{p.builds}}" as="b" hint-placeholder-count="3">
               <span class="gw-pill" style="color: #1f2a2a; background: rgba(255,255,255,.8); padding: 10px 16px; border-radius: 999px; font-size: 15px; font-weight: 800; animation-delay: {{b.delay}}">{{b.label}}</span>
@@ -358,7 +361,7 @@ class Component extends DCLogic {
         line: 'Turn day-one anxiety into day-one confidence.',
         about: 'The communication, etiquette and ownership new joiners need to settle into the workplace fast.',
         builds: ['Communication', 'Workplace etiquette', 'Ownership'] },
-      { id: 'leadup', name: 'LeadUp!', who: 'New managers', color: '#ffe885', fg: '#1f2a2a',
+      { id: 'firstchair', name: 'First Chair', who: 'First-time managers', color: '#ffe885', fg: '#1f2a2a', aquila: true,
         line: 'From individual contributor to team leader.',
         about: 'Emotional intelligence, coaching skills and leadership clarity for people leading a team for the first time.',
         builds: ['Emotional intelligence', 'Coaching', 'Leadership clarity'] },
@@ -366,16 +369,21 @@ class Component extends DCLogic {
         line: 'Fluency and presence for client-facing roles.',
         about: 'Built for high-potential talent from Tier 2 and 3 India stepping into client-facing roles.',
         builds: ['Fluency', 'Confidence', 'Professional presence'] },
-      { id: 'teamup', name: 'TeamUp!', who: 'Remote teams', color: '#d3eaea', fg: '#1f2a2a',
-        line: 'One team, wherever everyone sits.',
-        about: 'Collaboration, motivation and shared communication norms for teams that work across locations and functions.',
-        builds: ['Collaboration', 'Motivation', 'Cross-functional relationships', 'Shared norms'] }
+      { id: 'customer', name: 'The Customer Advantage', who: 'Sales & customer-facing teams', color: '#e8e4d9', fg: '#1f2a2a',
+        line: 'Turn tough customer conversations into stronger relationships.',
+        about: 'Consultative selling, customer centricity and calm, empathetic communication for people who face customers every day.',
+        builds: ['Consultative selling', 'Customer centricity', 'De-escalation'] },
+      { id: 'bettertogether', name: 'Better Together', who: 'All levels', color: '#d3eaea', fg: '#1f2a2a',
+        line: 'One team, across every level and location.',
+        about: 'Strategic thinking, collaboration and better decisions for teams that work across levels, locations and functions.',
+        builds: ['Strategic thinking', 'Collaboration', 'Team building', 'Decision-making'] }
     ];
     var cur = this.state.prog;
     var programs = defs.map(function (d) {
       var on = d.id === cur;
       return Object.assign({}, d, {
         on: on,
+        aquila: !!d.aquila,
         tabBg: on ? '#ffffff' : 'transparent',
         builds: d.builds.map(function (b, i) { return { label: b, delay: (i * 0.06) + 's' }; }),
         pick: function () { self.setState({ prog: d.id }); }
@@ -387,7 +395,7 @@ class Component extends DCLogic {
       { text: 'The feedback-driven approach made all the difference. Our team left with real tools they could use immediately.', who: 'Neelam Jain, Founder', org: 'PeriFerry', bg: '#fff6cc' },
       { text: 'The examples were so customised for our industry it didn’t feel like generic training at all.', who: 'Participant', org: 'Godrej Properties', bg: '#ffffff' }
     ];
-    return { bro: this.brochure({ title: 'Corporate programs brochure', orgWord: 'company name', orgLabel: 'Company', orgPh: 'Where you work', inside: ['StepUp!, LeadUp!, SpeakUp! and TeamUp! in detail', 'Our 360\u00b0 training needs audit', 'Formats: online, on-site or hybrid'] }), programs: programs, quotes: q.concat(q) };
+    return { bro: this.brochure({ title: 'Corporate programs brochure', orgWord: 'company name', orgLabel: 'Company', orgPh: 'Where you work', inside: ['StepUp!, First Chair, SpeakUp!, The Customer Advantage and Better Together in detail', 'Our 360\u00b0 training needs audit', 'Formats: online, on-site or hybrid'] }), programs: programs, quotes: q.concat(q) };
   }
 }
 
