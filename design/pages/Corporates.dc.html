@@ -69,6 +69,52 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 .gw-jump span:hover{transform:translateY(-14px) rotate(-4deg);color:#ffe885}
 .gw-foot a{color:#f4f3ee;text-decoration:none;opacity:.8;transition:opacity .2s ease}
 .gw-foot a:hover{opacity:1;color:#ffe885}
+.gw-fchip{border:0;background:transparent;color:#5a6464;border-radius:999px;padding:9px 16px;font-family:inherit;font-weight:800;font-size:15px;cursor:pointer}
+.gw-fchip.on{background:#1f2a2a;color:#f4f3ee}
+.gw-acc-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.gw-acc-list{border-top:1px solid #dcd8cd}
+.gw-acc-row{border-bottom:1px solid #dcd8cd}
+.gw-acc-head{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:34px 1fr 44px;gap:16px;align-items:center;padding:22px 0}
+.gw-acc-head:focus-visible{outline:3px solid #33999b;outline-offset:3px}
+.gw-acc-ico{width:28px;height:28px;color:#a3a9a6;transition:color .3s}
+.gw-acc-nm{display:flex;flex-direction:column;gap:2px}
+.gw-acc-nm b{font-family:var(--gw-display,'Bricolage Grotesque',sans-serif);font-weight:800;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.05;letter-spacing:-.02em;color:#a3a9a6;transition:color .3s}
+.gw-acc-nm span{font-size:14px;font-weight:700;color:#a3a9a6;transition:color .3s}
+.gw-acc-head:hover .gw-acc-nm b{color:#1f2a2a}
+.gw-acc-pm{width:40px;height:40px;border-radius:50%;border:1.5px solid #dcd8cd;display:grid;place-items:center;color:#1f2a2a;transition:background .3s,border-color .3s,color .3s}
+.gw-acc-pm svg{transition:transform .3s}
+.gw-acc-row.on .gw-acc-ico{color:#33999b}
+.gw-acc-row.on .gw-acc-nm b{color:#1f2a2a}
+.gw-acc-row.on .gw-acc-nm span{color:#257173}
+.gw-acc-row.on .gw-acc-pm{background:#1f2a2a;border-color:#1f2a2a;color:#f4f3ee}
+.gw-acc-row.on .gw-acc-pm svg{transform:rotate(45deg)}
+.gw-acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.2,.8,.2,1)}
+.gw-acc-row.on .gw-acc-body{grid-template-rows:1fr}
+.gw-acc-body > div{overflow:hidden}
+.gw-acc-in{padding:0 0 26px 50px;display:flex;flex-direction:column;gap:12px}
+.gw-acc-out{margin:0;font-size:clamp(1.15rem,1.6vw,1.35rem);line-height:1.25;font-weight:800}
+.gw-acc-skills{margin:0;color:#5a6464;font-size:16px;display:flex;flex-wrap:wrap;row-gap:2px}
+.gw-acc-skills span{white-space:nowrap}
+.gw-acc-skills i{font-style:normal;color:#33999b;margin:0 6px}
+.gw-acc-credit{font-size:14px;font-weight:700;color:#5a6464}
+.gw-acc-credit a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.gw-acc-link{align-self:flex-start;color:#1f2a2a;font-weight:800;border-bottom:2px solid #1f2a2a;padding-bottom:3px;margin-top:4px}
+.gw-acc-mph{display:none}
+.gw-acc-panel{position:sticky;top:96px}
+.gw-acc-card{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/4.3;background:#ddd}
+.gw-acc-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gw-acc-shade{position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(transparent,rgba(31,42,42,.72))}
+.gw-acc-label{position:absolute;left:24px;right:24px;bottom:22px;color:#fff;display:flex;flex-direction:column}
+.gw-acc-label small{font-size:12.5px;font-weight:800;opacity:.85}
+.gw-acc-label b{font-family:var(--gw-display,'Bricolage Grotesque',sans-serif);font-size:22px;line-height:1.15}
+@keyframes gw-fade{from{opacity:0;transform:scale(1.02)}to{opacity:1;transform:none}}
+.gw-fade{animation:gw-fade .5s ease both}
+.gw-acc-thumbs{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.gw-acc-thumb{width:52px;height:52px;border-radius:50%;padding:0;border:2px solid transparent;background:none;cursor:pointer;overflow:hidden;opacity:.6;transition:opacity .2s,border-color .2s}
+.gw-acc-thumb img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.gw-acc-thumb:hover{opacity:1}
+.gw-acc-thumb[aria-current="true"]{opacity:1;border-color:#33999b}
+@media (max-width:860px){.gw-acc-grid{grid-template-columns:minmax(0,1fr)}.gw-acc-panel{display:none}.gw-acc-mph{display:block;position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/11;margin-bottom:4px}.gw-acc-mph img{width:100%;height:100%;object-fit:cover;display:block}.gw-acc-mph span{position:absolute;left:14px;bottom:12px;color:#fff;font-weight:800;font-size:13px;text-shadow:0 1px 6px rgba(0,0,0,.5)}.gw-acc-in{padding-left:0}}
 @media (max-width:820px){.gw-stack{grid-template-columns:minmax(0,1fr)!important}.gw-hide-sm{display:none!important}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 .gw-dd{position:relative}
@@ -116,41 +162,67 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 </section>
 
 <!-- PROGRAMS -->
-<section id="programs" class="gw-wrap" style="padding-top: 40px; padding-bottom: 110px; display: flex; flex-direction: column; gap: 40px">
+<section id="programs" class="gw-wrap" style="padding-top: 40px; padding-bottom: 110px; display: flex; flex-direction: column; gap: 34px">
   <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
-    <h2 class="gw-display" style="margin: 0; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; font-weight: 800">Five programs.<br><span style="color: #257173">Every career stage.</span></h2>
-    <p style="margin: 0; font-size: 18px; line-height: 1.5; max-width: 380px; color: #3c4848">Each one is tuned to your team size, industry and goals.</p>
-  </div>
-  <div class="gw-stack" style="display: grid; gap: 18px; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr)">
-    <div style="display: flex; flex-direction: column; gap: 10px">
-      <sc-for list="{{programs}}" as="p" hint-placeholder-count="5">
-        <button type="button" class="gw-tab" onClick="{{p.pick}}" aria-pressed="{{p.on}}" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 24px; border-radius: 22px; background: {{p.tabBg}}">
-          <span style="display: flex; flex-direction: column; gap: 4px">
-            <span class="gw-display" style="font-size: 30px; font-weight: 800">{{p.name}}</span>
-            <span style="font-size: 15px; font-weight: 700; color: #4f5b5b">{{p.who}}</span>
-          </span>
-          <span style="width: 18px; height: 18px; border-radius: 50%; background: {{p.color}}; flex: none"></span>
-        </button>
+    <h2 class="gw-display" style="margin: 0; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; font-weight: 800">Find the right program<br>for your people.</h2>
+    <div role="group" aria-label="Filter programs" style="display: flex; flex-wrap: wrap; gap: 6px">
+      <sc-for list="{{filters}}" as="f" hint-placeholder-count="3">
+        <button type="button" class="gw-fchip {{f.cls}}" onClick="{{f.pick}}" aria-pressed="{{f.on}}">{{f.label}}</button>
       </sc-for>
     </div>
-    <sc-for list="{{programs}}" as="p" hint-placeholder-count="1">
-      <sc-if value="{{p.on}}" hint-placeholder-val="{{true}}">
-        <div class="gw-pop" style="background: {{p.color}}; color: {{p.fg}}; border-radius: 32px; padding: 44px; display: flex; flex-direction: column; gap: 22px; min-height: 420px">
-          <span class="gw-eyebrow" style="color: {{p.fg}}">{{p.who}}</span>
-          <span class="gw-display" style="font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: .95; font-weight: 800">{{p.name}}</span>
-          <span style="font-size: 22px; line-height: 1.4; font-weight: 700; max-width: 520px">{{p.line}}</span>
-          <span style="font-size: 17px; line-height: 1.55; max-width: 560px">{{p.about}}</span>
-          <sc-if value="{{p.aquila}}" hint-placeholder-val="{{false}}">
-            <span style="font-size: 16px; line-height: 1.5; font-weight: 700">Co-created with <a href="https://www.aquilalearning.in/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-underline-offset: 3px">Aquila Learning</a>.</span>
+  </div>
+  <div class="gw-acc-grid">
+    <div class="gw-acc-list">
+      <sc-for list="{{programs}}" as="p" hint-placeholder-count="5">
+        <sc-if value="{{p.show}}" hint-placeholder-val="{{true}}">
+          <div class="gw-acc-row {{p.cls}}">
+            <button type="button" class="gw-acc-head" onClick="{{p.pick}}" aria-expanded="{{p.on}}">
+              <svg class="gw-acc-ico" viewBox="0 0 28 28" aria-hidden="true">
+                <sc-if value="{{p.iChair}}" hint-placeholder-val="{{true}}"><path d="M8 3h12v10H8zM6 13h16v4H6zM8 17v8M20 17v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path></sc-if>
+                <sc-if value="{{p.iStairs}}" hint-placeholder-val="{{false}}"><path d="M3 24h6v-6h6v-6h6V6h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path></sc-if>
+                <sc-if value="{{p.iSpeech}}" hint-placeholder-val="{{false}}"><path d="M4 6h20v13H12l-6 5v-5H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path><path d="M9 12.5h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></sc-if>
+                <sc-if value="{{p.iHand}}" hint-placeholder-val="{{false}}"><path d="M3 13l6-6 5 3 5-3 6 6-6 7-5-4-5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path></sc-if>
+                <sc-if value="{{p.iTeam}}" hint-placeholder-val="{{false}}"><circle cx="10" cy="11" r="5" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="18" cy="11" r="5" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="14" cy="18" r="5" fill="none" stroke="currentColor" stroke-width="2"></circle></sc-if>
+              </svg>
+              <span class="gw-acc-nm"><b>{{p.name}}</b><span>{{p.who}}</span></span>
+              <span class="gw-acc-pm" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></span>
+            </button>
+            <div class="gw-acc-body"><div><div class="gw-acc-in">
+              <sc-if value="{{p.on}}" hint-placeholder-val="{{true}}">
+                <div class="gw-acc-mph"><img src="{{p.img}}" alt="{{p.alt}}"><span>{{p.client}}</span></div>
+              </sc-if>
+              <p class="gw-acc-out">{{p.out}}</p>
+              <p class="gw-acc-skills"><sc-for list="{{p.skills}}" as="k" hint-placeholder-count="3"><sc-if value="{{k.sep}}" hint-placeholder-val="{{false}}"><i>/</i></sc-if><span>{{k.label}}</span></sc-for></p>
+              <sc-if value="{{p.aquila}}" hint-placeholder-val="{{true}}">
+                <span class="gw-acc-credit">Co-created with <a href="https://www.aquilalearning.in/" target="_blank" rel="noopener">Aquila Learning</a></span>
+                <a href="Contact.dc.html" class="gw-btn" style="align-self: flex-start; background: #1f2a2a; color: #f4f3ee; padding: 13px 22px; border-radius: 999px; font-weight: 800; font-size: 16px">Book a First Chair call</a>
+              </sc-if>
+              <sc-if value="{{p.plain}}" hint-placeholder-val="{{false}}">
+                <a href="Contact.dc.html" class="gw-acc-link">Talk to us about {{p.name}}</a>
+              </sc-if>
+            </div></div></div>
+          </div>
+        </sc-if>
+      </sc-for>
+    </div>
+    <aside class="gw-acc-panel" aria-label="Client story">
+      <sc-for list="{{programs}}" as="p" hint-placeholder-count="1">
+        <sc-if value="{{p.on}}" hint-placeholder-val="{{true}}">
+          <div class="gw-acc-card gw-fade">
+            <img src="{{p.img}}" alt="{{p.alt}}">
+            <span class="gw-acc-shade"></span>
+            <span class="gw-acc-label"><small>{{p.client}}</small><b>{{p.story}}</b></span>
+          </div>
+        </sc-if>
+      </sc-for>
+      <div class="gw-acc-thumbs" aria-label="Client stories">
+        <sc-for list="{{programs}}" as="p" hint-placeholder-count="5">
+          <sc-if value="{{p.show}}" hint-placeholder-val="{{true}}">
+            <button type="button" class="gw-acc-thumb" onClick="{{p.pick}}" aria-current="{{p.on}}" aria-label="{{p.client}}: {{p.name}}"><img src="{{p.img}}" alt=""></button>
           </sc-if>
-          <span style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto">
-            <sc-for list="{{p.builds}}" as="b" hint-placeholder-count="3">
-              <span class="gw-pill" style="color: #1f2a2a; background: rgba(255,255,255,.8); padding: 10px 16px; border-radius: 999px; font-size: 15px; font-weight: 800; animation-delay: {{b.delay}}">{{b.label}}</span>
-            </sc-for>
-          </span>
-        </div>
-      </sc-if>
-    </sc-for>
+        </sc-for>
+      </div>
+    </aside>
   </div>
 </section>
 
@@ -307,7 +379,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { prog: 'stepup' };
+    this.state = { prog: 'firstchair', flt: 'all' };
   }
   brochure(cfg) {
     var self = this;
@@ -357,37 +429,40 @@ class Component extends DCLogic {
   renderVals() {
     var self = this;
     var defs = [
-      { id: 'stepup', name: 'StepUp!', who: 'Freshers & interns', color: '#33999b', fg: '#ffffff',
-        line: 'Turn day-one anxiety into day-one confidence.',
-        about: 'The communication, etiquette and ownership new joiners need to settle into the workplace fast.',
-        builds: ['Communication', 'Workplace etiquette', 'Ownership'] },
-      { id: 'firstchair', name: 'First Chair', who: 'First-time managers', color: '#ffe885', fg: '#1f2a2a', aquila: true,
-        line: 'From individual contributor to team leader.',
-        about: 'Emotional intelligence, coaching skills and leadership clarity for people leading a team for the first time.',
-        builds: ['Emotional intelligence', 'Coaching', 'Leadership clarity'] },
-      { id: 'speakup', name: 'SpeakUp!', who: 'Across levels', color: '#1f2a2a', fg: '#f4f3ee',
-        line: 'Spoken English that holds up in front of clients.',
-        about: 'Builds English fluency and confidence for high-stakes, client-facing conversations, through cycles of instruction, practice and live feedback.',
-        builds: ['Spoken English', 'Customer-facing communication'] },
-      { id: 'customer', name: 'The Customer Advantage', who: 'Sales & customer-facing teams', color: '#e8e4d9', fg: '#1f2a2a',
-        line: 'Turn tough customer conversations into stronger relationships.',
-        about: 'Consultative selling, customer centricity and calm, empathetic communication for people who face customers every day.',
-        builds: ['Consultative selling', 'Customer centricity', 'De-escalation'] },
-      { id: 'bettertogether', name: 'Better Together', who: 'All levels', color: '#d3eaea', fg: '#1f2a2a',
-        line: 'One team, across every level and location.',
-        about: 'Strategic thinking, collaboration and better decisions for teams that work across levels, locations and functions.',
-        builds: ['Strategic thinking', 'Collaboration', 'Team building', 'Decision-making'] }
+      { id: 'firstchair', name: 'First Chair', who: 'First-time managers', icon: 'Chair', tags: ['mgr'], aquila: true,
+        out: 'New managers lead people with confidence.', skills: ['Emotional intelligence', 'Coaching', 'Leadership clarity'],
+        client: 'Neebal Technologies', story: 'Building a first line of managers', img: '/_blob/c1fe243d2be17866ec90fdce2306f8a2', alt: 'Mood-o-meter wall of sticky notes from a session' },
+      { id: 'stepup', name: 'StepUp!', who: 'Freshers & interns', icon: 'Stairs', tags: ['new'],
+        out: 'New joiners settle in and contribute faster.', skills: ['Communication', 'Workplace etiquette', 'Ownership'],
+        client: 'Tyson Foods', story: 'Campus to corporate in 3.5 days', img: '/_blob/d5d897609f7d373bc2db2ff61049478f', alt: 'Team photo at a Tyson Foods workshop' },
+      { id: 'speakup', name: 'SpeakUp!', who: 'Any level, client-facing', icon: 'Speech', tags: ['new', 'mgr'],
+        out: 'Fluent, confident spoken English with clients.', skills: ['Spoken English', 'Customer-facing communication'],
+        client: 'EY GDS', story: 'A 21-day fluency cycle', img: '/_blob/0f972a7e8e3c92106dc970793209b15d', alt: 'Workshop group selfie' },
+      { id: 'customer', name: 'The Customer Advantage', who: 'Sales & customer-facing teams', icon: 'Hand', tags: ['new', 'mgr'],
+        out: 'Tough customer conversations become stronger relationships.', skills: ['Consultative selling', 'Customer centricity', 'De-escalation'],
+        client: 'Godrej Properties', story: 'Five locations, 4.8/5 feedback', img: '/_blob/bedb28f7e37afee83146c5476eada54a', alt: 'Participants working through a customer-conversation activity' },
+      { id: 'bettertogether', name: 'Better Together', who: 'Whole teams, all levels', icon: 'Team', tags: ['new', 'mgr'],
+        out: 'Teams across locations collaborate and decide better.', skills: ['Strategic thinking', 'Collaboration', 'Team building', 'Decision-making'],
+        client: 'EXA Infrastructure', story: 'One culture across three cities', img: '/_blob/c3a5643f775c334e2699380a4bdea118', alt: 'Large group photo after a workshop' }
     ];
+    var flt = this.state.flt || 'all';
+    var visible = defs.filter(function (d) { return flt === 'all' || d.tags.indexOf(flt) >= 0; });
     var cur = this.state.prog;
+    if (!visible.some(function (d) { return d.id === cur; })) cur = visible[0].id;
     var programs = defs.map(function (d) {
       var on = d.id === cur;
       return Object.assign({}, d, {
-        on: on,
-        aquila: !!d.aquila,
-        tabBg: on ? '#ffffff' : 'transparent',
-        builds: d.builds.map(function (b, i) { return { label: b, delay: (i * 0.06) + 's' }; }),
+        on: on, cls: on ? 'on' : '',
+        show: visible.indexOf(d) >= 0,
+        aquila: !!d.aquila, plain: !d.aquila,
+        iChair: d.icon === 'Chair', iStairs: d.icon === 'Stairs', iSpeech: d.icon === 'Speech', iHand: d.icon === 'Hand', iTeam: d.icon === 'Team',
+        skills: d.skills.map(function (k, i) { return { label: k, sep: i > 0 }; }),
         pick: function () { self.setState({ prog: d.id }); }
       });
+    });
+    var filters = [['all', 'Everyone'], ['new', 'New joiners'], ['mgr', 'Managers']].map(function (f) {
+      var on = f[0] === flt;
+      return { label: f[1], on: on, cls: on ? 'on' : '', pick: function () { self.setState({ flt: f[0] }); } };
     });
     var q = [
       { text: 'Our team now speaks with more clarity on calls, with clients, and internally.', who: 'Soumya, HR', org: 'Tyson Foods', bg: '#ffffff' },
@@ -395,7 +470,7 @@ class Component extends DCLogic {
       { text: 'The feedback-driven approach made all the difference. Our team left with real tools they could use immediately.', who: 'Neelam Jain, Founder', org: 'PeriFerry', bg: '#fff6cc' },
       { text: 'The examples were so customised for our industry it didn’t feel like generic training at all.', who: 'Participant', org: 'Godrej Properties', bg: '#ffffff' }
     ];
-    return { bro: this.brochure({ title: 'Corporate programs brochure', orgWord: 'company name', orgLabel: 'Company', orgPh: 'Where you work', inside: ['StepUp!, First Chair, SpeakUp!, The Customer Advantage and Better Together in detail', 'Our 360\u00b0 training needs audit', 'Formats: online, on-site or hybrid'] }), programs: programs, quotes: q.concat(q) };
+    return { bro: this.brochure({ title: 'Corporate programs brochure', orgWord: 'company name', orgLabel: 'Company', orgPh: 'Where you work', inside: ['StepUp!, First Chair, SpeakUp!, The Customer Advantage and Better Together in detail', 'Our 360\u00b0 training needs audit', 'Formats: online, on-site or hybrid'] }), programs: programs, filters: filters, quotes: q.concat(q) };
   }
 }
 
