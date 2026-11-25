@@ -69,6 +69,15 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 .gw-jump span:hover{transform:translateY(-14px) rotate(-4deg);color:#ffe885}
 .gw-foot a{color:#f4f3ee;text-decoration:none;opacity:.8;transition:opacity .2s ease}
 .gw-foot a:hover{opacity:1;color:#ffe885}
+.gw-cmp{display:grid;grid-template-columns:170px repeat(3,minmax(0,1fr));grid-template-rows:repeat(6,auto);background:#fff;border-radius:28px;overflow:hidden}
+.gw-cmp-labels,.gw-cmp-col{grid-row:1/span 6;display:grid;grid-template-rows:subgrid}
+.gw-cmp-labels{background:#fbfaf6}
+.gw-cmp-lab{padding:20px 22px;font-size:15px;font-weight:800;color:#257173;border-top:1px solid #ece9df}
+.gw-cmp-head{padding:26px 22px 16px}
+.gw-cmp-sw{display:block;height:8px;border-radius:999px;margin-bottom:14px}
+.gw-cmp-cell{padding:20px 22px;border-top:1px solid #ece9df;font-size:16px;line-height:1.5;color:#3c4848}
+.gw-cmp-mlab{display:none}
+@media (max-width:820px){.gw-cmp{display:flex;flex-direction:column;gap:14px;background:none;border-radius:0}.gw-cmp-labels{display:none}.gw-cmp-col{display:block;background:#fff;border-radius:24px;overflow:hidden}.gw-cmp-mlab{display:block;font-size:13px;font-weight:800;color:#257173;margin-bottom:4px}.gw-cmp-cell{padding:14px 22px}}
 @media (max-width:820px){.gw-stack{grid-template-columns:minmax(0,1fr)!important}.gw-hide-sm{display:none!important}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 .gw-dd{position:relative}
@@ -152,32 +161,28 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 <!-- FORMATS -->
 <section id="formats" class="gw-wrap" style="padding-top: 60px; padding-bottom: 110px; display: flex; flex-direction: column; gap: 32px">
   <h2 class="gw-display" style="margin: 0; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; font-weight: 800">Pick your pace.</h2>
-  <div role="group" aria-label="Program format" style="display: flex; flex-wrap: wrap; gap: 10px">
+  <div class="gw-cmp" role="table" aria-label="Compare campus program formats">
+    <div class="gw-cmp-labels" role="rowgroup" aria-hidden="true">
+      <span class="gw-cmp-corner"></span>
+      <span class="gw-cmp-lab">Length</span>
+      <span class="gw-cmp-lab">Batch size</span>
+      <span class="gw-cmp-lab">Best for</span>
+      <span class="gw-cmp-lab">Covers</span>
+      <span class="gw-cmp-lab">The shift</span>
+    </div>
     <sc-for list="{{formats}}" as="f" hint-placeholder-count="3">
-      <button type="button" class="gw-chip {{f.cls}}" onClick="{{f.pick}}" aria-pressed="{{f.on}}">{{f.tab}}</button>
+      <div class="gw-cmp-col" role="rowgroup">
+        <div class="gw-cmp-head"><span class="gw-cmp-sw" style="background: {{f.color}}"></span><span class="gw-display" style="font-size: 26px; font-weight: 800; line-height: 1.05">{{f.name}}</span></div>
+        <div class="gw-cmp-cell"><span class="gw-cmp-mlab">Length</span><span class="gw-display" style="font-size: 22px; font-weight: 800">{{f.length}}</span></div>
+        <div class="gw-cmp-cell"><span class="gw-cmp-mlab">Batch size</span><span>{{f.size}}</span></div>
+        <div class="gw-cmp-cell"><span class="gw-cmp-mlab">Best for</span><span>{{f.best}}</span></div>
+        <div class="gw-cmp-cell"><span class="gw-cmp-mlab">Covers</span><span style="display: flex; flex-wrap: wrap; gap: 6px">
+          <sc-for list="{{f.covers}}" as="c" hint-placeholder-count="4"><span style="background: #f4f3ee; padding: 7px 13px; border-radius: 999px; font-size: 14px; font-weight: 800; color: #1f2a2a">{{c.label}}</span></sc-for>
+        </span></div>
+        <div class="gw-cmp-cell"><span class="gw-cmp-mlab">The shift</span><span>From “{{f.from}}”<br><b style="color: #1f2a2a">To “{{f.to}}”</b></span></div>
+      </div>
     </sc-for>
   </div>
-  <sc-for list="{{formats}}" as="f" hint-placeholder-count="1">
-    <sc-if value="{{f.on}}" hint-placeholder-val="{{true}}">
-      <div class="gw-pop gw-stack" style="display: grid; gap: 18px; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr)">
-        <div style="background: #fff; border-radius: 32px; padding: 40px; display: flex; flex-direction: column; gap: 18px">
-          <span class="gw-eyebrow">{{f.length}}</span>
-          <span class="gw-display" style="font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 800; line-height: 1">{{f.name}}</span>
-          <span style="font-size: 18px; line-height: 1.55; color: #3c4848">{{f.about}}</span>
-          <span style="display: flex; flex-wrap: wrap; gap: 8px">
-            <sc-for list="{{f.covers}}" as="c" hint-placeholder-count="4">
-              <span class="gw-pill" style="background: #d3eaea; padding: 9px 15px; border-radius: 999px; font-size: 15px; font-weight: 700; animation-delay: {{c.delay}}">{{c.label}}</span>
-            </sc-for>
-          </span>
-        </div>
-        <div style="background: #33999b; color: #fff; border-radius: 32px; padding: 40px; display: flex; flex-direction: column; justify-content: center; gap: 18px">
-          <span class="gw-eyebrow" style="color: #fff">The shift</span>
-          <span style="font-size: 18px; font-weight: 700; opacity: .85">From: "{{f.from}}"</span>
-          <span class="gw-display" style="font-size: 30px; font-weight: 800; line-height: 1.1">To: "{{f.to}}"</span>
-        </div>
-      </div>
-    </sc-if>
-  </sc-for>
 </section>
 
 <!-- WIN WIN WIN -->
@@ -373,17 +378,14 @@ class Component extends DCLogic {
   renderVals() {
     var self = this;
     var defs = [
-      { id: 'powerup', tab: 'PowerUP workshop', length: '2–3 days · 6–12 hours', name: 'PowerUP Workshops',
-        about: 'Short, activity-packed workshops that spark awareness and build one skill fast. Great for orientation weeks and semester breaks.',
-        covers: ['Confidence & communication', 'GD & personal interviews', 'Resume building', 'Problem solving & EI', 'Entrepreneurial thinking', 'Excel & data handling', 'Workplace etiquette'],
+      { id: 'powerup', name: 'PowerUP workshop', length: '2–3 days · 6–12 hours', size: 'On request', best: 'Orientation weeks & semester breaks', color: '#ffe885',
+        covers: ['Confidence & communication', 'GD & interviews', 'Resume building', 'Problem solving & EI', 'Workplace etiquette'],
         from: 'I never speak up.', to: 'I can do this.' },
-      { id: 'sprint', tab: 'Final Year Sprint', length: '64 hours · up to 30 students', name: 'Final Year Sprint',
-        about: 'Gives final-year students the essential tools to perform confidently in placements, in eight focused days.',
-        covers: ['Resume & LinkedIn', 'Communication & presence', 'Aptitude & GDs', 'Domain & behavioural interviews', 'Mock interviews', 'Final placement simulation'],
+      { id: 'sprint', name: 'Final Year Sprint', length: '64 hours', size: 'Up to 30 students', best: 'Final-year students', color: '#33999b',
+        covers: ['Resume & LinkedIn', 'Communication & presence', 'Aptitude & GDs', 'Domain & behavioural interviews', 'Mock interviews'],
         from: 'I know the answer.', to: 'I can explain, defend, and apply it.' },
-      { id: 'bootcamp', tab: 'Placement Bootcamp', length: '30 days · up to 30 students', name: 'Placement Bootcamp',
-        about: 'An immersive journey that builds business fundamentals, domain expertise, workplace skills and problem solving, then converts them into offers.',
-        covers: ['Level 1: Foundation', 'Level 2: Domain build', 'Level 3: Simulations & interviews', 'Level 4: Placement conversion', 'Pre & post assessment'],
+      { id: 'bootcamp', name: 'Placement Bootcamp', length: '30 days', size: 'Up to 30 students', best: 'Students who want the full journey', color: '#1f2a2a',
+        covers: ['Foundation', 'Domain build', 'Simulations & interviews', 'Placement conversion', 'Pre & post assessment'],
         from: 'Ready on paper.', to: 'Ready in person, and placed.' }
     ];
     var cur = this.state.fmt;
