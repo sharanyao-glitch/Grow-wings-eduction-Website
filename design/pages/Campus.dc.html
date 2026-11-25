@@ -69,8 +69,8 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 .gw-jump span:hover{transform:translateY(-14px) rotate(-4deg);color:#ffe885}
 .gw-foot a{color:#f4f3ee;text-decoration:none;opacity:.8;transition:opacity .2s ease}
 .gw-foot a:hover{opacity:1;color:#ffe885}
-.gw-cmp{display:grid;grid-template-columns:170px repeat(3,minmax(0,1fr));grid-template-rows:repeat(6,auto);background:#fff;border-radius:28px;overflow:hidden}
-.gw-cmp-labels,.gw-cmp-col{grid-row:1/span 6;display:grid;grid-template-rows:subgrid}
+.gw-cmp{display:grid;grid-template-columns:170px repeat(3,minmax(0,1fr));grid-template-rows:repeat(7,auto);background:#fff;border-radius:28px;overflow:hidden}
+.gw-cmp-labels,.gw-cmp-col{grid-row:1/span 7;display:grid;grid-template-rows:subgrid}
 .gw-cmp-labels{background:#fbfaf6}
 .gw-cmp-lab{padding:20px 22px;font-size:15px;font-weight:800;color:#257173;border-top:1px solid #ece9df}
 .gw-cmp-head{padding:26px 22px 16px}
@@ -111,7 +111,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
     <h1 class="gw-display gw-rise d1" style="margin: 0; font-size: clamp(3rem, 7vw, 6rem); line-height: .95; font-weight: 800">Fluent.<br>Fearless.<br><span style="color: #257173">Future-ready.</span></h1>
     <p class="gw-rise d2" style="margin: 0; font-size: 20px; line-height: 1.55; max-width: 520px; color: #3c4848">We give students the communication edge for interviews, internships and their first day at work.</p>
     <div class="gw-rise d3" style="display: flex; flex-wrap: wrap; gap: 12px">
-      <a href="Contact.dc.html" class="gw-btn" style="background: #33999b; color: #fff; padding: 16px 26px; border-radius: 999px; font-weight: 800; font-size: 17px">Partner with us <span class="gw-arrow">→</span></a>
+      <a href="Contact.dc.html?topic=campus" class="gw-btn" style="background: #33999b; color: #fff; padding: 16px 26px; border-radius: 999px; font-weight: 800; font-size: 17px">Partner with us <span class="gw-arrow">→</span></a>
       <button type="button" class="gw-btn" onClick="{{bro.openIt}}" style="background: #ffe885; color: #1f2a2a; padding: 16px 26px; border-radius: 999px; font-weight: 800; font-size: 17px">Request brochure <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg></button>
       <a href="#formats" class="gw-btn" style="background: #fff; color: #1f2a2a; padding: 16px 26px; border-radius: 999px; font-weight: 800; font-size: 17px; box-shadow: inset 0 0 0 2px #1f2a2a">Compare formats</a>
     </div>
@@ -169,6 +169,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
       <span class="gw-cmp-lab">Best for</span>
       <span class="gw-cmp-lab">Covers</span>
       <span class="gw-cmp-lab">The shift</span>
+      <span class="gw-cmp-lab"></span>
     </div>
     <sc-for list="{{formats}}" as="f" hint-placeholder-count="3">
       <div class="gw-cmp-col" role="rowgroup">
@@ -180,6 +181,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
           <sc-for list="{{f.covers}}" as="c" hint-placeholder-count="4"><span style="background: #f4f3ee; padding: 7px 13px; border-radius: 999px; font-size: 14px; font-weight: 800; color: #1f2a2a">{{c.label}}</span></sc-for>
         </span></div>
         <div class="gw-cmp-cell"><span class="gw-cmp-mlab">The shift</span><span>From “{{f.from}}”<br><b style="color: #1f2a2a">To “{{f.to}}”</b></span></div>
+        <div class="gw-cmp-cell"><a href="Contact.dc.html?topic=campus&amp;program={{f.q}}" style="color: #1f2a2a; font-weight: 800; border-bottom: 2px solid #1f2a2a; padding-bottom: 3px">Talk to us about {{f.name}}</a></div>
       </div>
     </sc-for>
   </div>
@@ -237,7 +239,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
       <h2 class="gw-display" style="margin: 0; font-size: clamp(2.6rem, 6vw, 5rem); line-height: .95; font-weight: 800">Build a future-ready campus.</h2>
       <p style="margin: 0; font-size: 19px; line-height: 1.5; max-width: 520px">Share your campus goals and we'll send a suggested training plan.</p>
     </div>
-    <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end"><a href="Contact.dc.html" class="gw-btn" style="background: #fff; color: #1f2a2a; padding: 18px 30px; border-radius: 999px; font-weight: 800; font-size: 18px">Partner with us <span class="gw-arrow">→</span></a><button type="button" class="gw-btn" onClick="{{bro.openIt}}" style="background: #ffe885; color: #1f2a2a; padding: 18px 30px; border-radius: 999px; font-weight: 800; font-size: 18px">Request brochure <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg></button></div>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end"><a href="Contact.dc.html?topic=campus" class="gw-btn" style="background: #fff; color: #1f2a2a; padding: 18px 30px; border-radius: 999px; font-weight: 800; font-size: 18px">Partner with us <span class="gw-arrow">→</span></a><button type="button" class="gw-btn" onClick="{{bro.openIt}}" style="background: #ffe885; color: #1f2a2a; padding: 18px 30px; border-radius: 999px; font-weight: 800; font-size: 18px">Request brochure <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg></button></div>
   </div>
 </section>
 <dc-import name="Footer" hint-size="100%,640px"></dc-import>
@@ -313,7 +315,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
             <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4f5b5b">Your download should start on its own. If it doesn't, use the button below. We've also sent a copy to {{bro.f.email}}.</p>
             <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px">
               <a href="#" download="download" class="gw-btn" style="background: #33999b; color: #fff; padding: 14px 22px; border-radius: 999px; font-weight: 800; font-size: 16px">Download PDF <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg></a>
-              <a href="Contact.dc.html" class="gw-btn" style="background: #f4f3ee; color: #1f2a2a; padding: 14px 22px; border-radius: 999px; font-weight: 800; font-size: 16px">Book a call <span class="gw-arrow">→</span></a>
+              <a href="Contact.dc.html?topic=campus" class="gw-btn" style="background: #f4f3ee; color: #1f2a2a; padding: 14px 22px; border-radius: 999px; font-weight: 800; font-size: 16px">Book a call <span class="gw-arrow">→</span></a>
             </div>
           </div>
         </sc-if>
@@ -392,7 +394,7 @@ class Component extends DCLogic {
     var formats = defs.map(function (d) {
       var on = d.id === cur;
       return Object.assign({}, d, {
-        on: on, cls: on ? 'on' : '',
+        on: on, cls: on ? 'on' : '', q: encodeURIComponent(d.name),
         covers: d.covers.map(function (c, i) { return { label: c, delay: (i * 0.05) + 's' }; }),
         pick: function () { self.setState({ fmt: d.id }); }
       });

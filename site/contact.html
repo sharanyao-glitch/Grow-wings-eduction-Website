@@ -368,6 +368,19 @@ class Component extends DCLogic {
     super(props);
     this.state = { topic: 'corporates', sent: false };
   }
+  componentDidMount() {
+    // Prefill from links like /contact?topic=corporates&program=First%20Chair
+    if (typeof window === 'undefined') return;
+    var q = new URLSearchParams(window.location.search);
+    var topic = q.get('topic');
+    if (['corporates', 'campus', 'youngminds', 'other'].indexOf(topic) >= 0) this.setState({ topic: topic });
+    var program = (q.get('program') || '').replace(/[<>]/g, '').slice(0, 80);
+    var msg = document.getElementById('c-msg');
+    if (!msg || msg.value) return;
+    if (program) msg.value = 'Hi team,\n\nWanted to talk about ' + (/^the /i.test(program) ? '' : 'the ') + program + (/workshop$/i.test(program) ? '' : ' program') + '.\n\n';
+    else if (topic === 'corporates') msg.value = 'Hi team,\n\nWanted to talk about your corporate programs.\n\n';
+    else if (topic === 'campus') msg.value = 'Hi team,\n\nWanted to talk about your campus programs.\n\n';
+  }
   renderVals() {
     var self = this;
     var defs = [

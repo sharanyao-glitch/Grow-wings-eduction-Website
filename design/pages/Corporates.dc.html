@@ -148,7 +148,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
     <h1 class="gw-display gw-rise d1" style="margin: 0; font-size: clamp(2.8rem, 6vw, 5.2rem); line-height: .98; font-weight: 800">Confident teams.<br>Better conversations.<br><span style="color: #257173">Real results.</span></h1>
     <p class="gw-rise d2" style="margin: 0; font-size: 20px; line-height: 1.55; max-width: 540px; color: #3c4848">We help people communicate clearly, listen well and act with confidence, with each other and with clients. Every pathway is built to change behaviour, not tick a box.</p>
     <div class="gw-rise d3" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
-      <a href="Contact.dc.html" class="gw-btn" style="background: #33999b; color: #fff; padding: 16px 26px; border-radius: 999px; font-weight: 800; font-size: 17px">Book a call <span class="gw-arrow">→</span></a>
+      <a href="Contact.dc.html?topic=corporates" class="gw-btn" style="background: #33999b; color: #fff; padding: 16px 26px; border-radius: 999px; font-weight: 800; font-size: 17px">Book a call <span class="gw-arrow">→</span></a>
       <button type="button" class="gw-btn" onClick="{{bro.openIt}}" style="background: #ffe885; color: #1f2a2a; padding: 16px 26px; border-radius: 999px; font-weight: 800; font-size: 17px">Request brochure <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg></button>
       <a href="#programs" class="gw-btn" style="background: #fff; color: #1f2a2a; padding: 16px 26px; border-radius: 999px; font-weight: 800; font-size: 17px; box-shadow: inset 0 0 0 2px #1f2a2a">See programs</a>
     </div>
@@ -195,10 +195,10 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
               <p class="gw-acc-skills"><sc-for list="{{p.skills}}" as="k" hint-placeholder-count="3"><sc-if value="{{k.sep}}" hint-placeholder-val="{{false}}"><i>/</i></sc-if><span>{{k.label}}</span></sc-for></p>
               <sc-if value="{{p.aquila}}" hint-placeholder-val="{{true}}">
                 <span class="gw-acc-credit">Co-created with <a href="https://www.aquilalearning.in/" target="_blank" rel="noopener">Aquila Learning</a></span>
-                <a href="Contact.dc.html" class="gw-btn" style="align-self: flex-start; background: #1f2a2a; color: #f4f3ee; padding: 13px 22px; border-radius: 999px; font-weight: 800; font-size: 16px">Book a First Chair call</a>
+                <a href="Contact.dc.html?topic=corporates&amp;program={{p.q}}" class="gw-btn" style="align-self: flex-start; background: #1f2a2a; color: #f4f3ee; padding: 13px 22px; border-radius: 999px; font-weight: 800; font-size: 16px">Book a First Chair call</a>
               </sc-if>
               <sc-if value="{{p.plain}}" hint-placeholder-val="{{false}}">
-                <a href="Contact.dc.html" class="gw-acc-link">Talk to us about {{p.name}}</a>
+                <a href="Contact.dc.html?topic=corporates&amp;program={{p.q}}" class="gw-acc-link">Talk to us about {{p.name}}</a>
               </sc-if>
             </div></div></div>
           </div>
@@ -288,7 +288,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
       <h2 class="gw-display" style="margin: 0; font-size: clamp(2.6rem, 6vw, 5rem); line-height: .95; font-weight: 800">Ready to power up your people?</h2>
       <p style="margin: 0; font-size: 19px; line-height: 1.5; max-width: 520px">Share your team, goals and timeline. We'll design the program around them.</p>
     </div>
-    <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end"><a href="Contact.dc.html" class="gw-btn" style="background: #fff; color: #1f2a2a; padding: 18px 30px; border-radius: 999px; font-weight: 800; font-size: 18px">Book a call <span class="gw-arrow">→</span></a><button type="button" class="gw-btn" onClick="{{bro.openIt}}" style="background: #ffe885; color: #1f2a2a; padding: 18px 30px; border-radius: 999px; font-weight: 800; font-size: 18px">Request brochure <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg></button></div>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end"><a href="Contact.dc.html?topic=corporates" class="gw-btn" style="background: #fff; color: #1f2a2a; padding: 18px 30px; border-radius: 999px; font-weight: 800; font-size: 18px">Book a call <span class="gw-arrow">→</span></a><button type="button" class="gw-btn" onClick="{{bro.openIt}}" style="background: #ffe885; color: #1f2a2a; padding: 18px 30px; border-radius: 999px; font-weight: 800; font-size: 18px">Request brochure <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg></button></div>
   </div>
 </section>
 <dc-import name="Footer" hint-size="100%,640px"></dc-import>
@@ -364,7 +364,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
             <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4f5b5b">Your download should start on its own. If it doesn't, use the button below. We've also sent a copy to {{bro.f.email}}.</p>
             <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px">
               <a href="#" download="download" class="gw-btn" style="background: #33999b; color: #fff; padding: 14px 22px; border-radius: 999px; font-weight: 800; font-size: 16px">Download PDF <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg></a>
-              <a href="Contact.dc.html" class="gw-btn" style="background: #f4f3ee; color: #1f2a2a; padding: 14px 22px; border-radius: 999px; font-weight: 800; font-size: 16px">Book a call <span class="gw-arrow">→</span></a>
+              <a href="Contact.dc.html?topic=corporates" class="gw-btn" style="background: #f4f3ee; color: #1f2a2a; padding: 14px 22px; border-radius: 999px; font-weight: 800; font-size: 16px">Book a call <span class="gw-arrow">→</span></a>
             </div>
           </div>
         </sc-if>
@@ -454,7 +454,7 @@ class Component extends DCLogic {
       return Object.assign({}, d, {
         on: on, cls: on ? 'on' : '',
         show: visible.indexOf(d) >= 0,
-        aquila: !!d.aquila, plain: !d.aquila,
+        aquila: !!d.aquila, plain: !d.aquila, q: encodeURIComponent(d.name),
         iChair: d.icon === 'Chair', iStairs: d.icon === 'Stairs', iSpeech: d.icon === 'Speech', iHand: d.icon === 'Hand', iTeam: d.icon === 'Team',
         skills: d.skills.map(function (k, i) { return { label: k, sep: i > 0 }; }),
         pick: function () { self.setState({ prog: d.id }); }
