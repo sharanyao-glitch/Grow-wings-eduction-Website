@@ -26,7 +26,7 @@ const OG_IMAGE = { file: 'assets/og-image.png', width: 1200, height: 630, alt: '
 // Design artboard -> published file name. Order matches the canvas.
 // `priority` is the sitemap hint (0-1) for how important a page is relative to the others.
 const PAGES = {
-  Main: { file: 'index.html', title: 'Grow Wings | Life skills training for teams, campuses and young minds', priority: 1.0 },
+  Main: { file: 'index.html', title: 'Grow Wings | Life skills training for teams, campuses and individuals', priority: 1.0 },
   Corporates: { file: 'corporates.html', title: 'Corporate training programs', priority: 0.9 },
   Campus: { file: 'campus.html', title: 'Campus programs', priority: 0.9 },
   YoungMinds: { file: 'skills-irl.html', title: 'SkillsIRL', priority: 0.9 },
@@ -68,7 +68,7 @@ const ORG_JSONLD = {
       logo: `${SITE_URL}/assets/img/ebc6bd594dc2b99c923776fd8ef47649.png`,
       image: `${SITE_URL}/${OG_IMAGE.file}`,
       slogan: 'Grow. Lead. Change the game.',
-      description: 'Life skills workshops for corporate teams, college campuses and young minds: building the mind, heart and voice.',
+      description: 'Life skills workshops for corporate teams, college campuses and individuals: building the mind, heart and voice.',
       email: 'hello@growwings.in',
       telephone: '+91-74004-54654',
       address: { '@type': 'PostalAddress', addressLocality: 'Pune', addressRegion: 'Maharashtra', addressCountry: 'IN' },
@@ -158,7 +158,7 @@ function describe(html) {
     const text = m[1].replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&#39;|&rsquo;/g, '’').replace(/\s+/g, ' ').trim();
     if (text.length >= 60) return text.length > 160 ? `${text.slice(0, 157).replace(/\s+\S*$/, '')}…` : text;
   }
-  return `${SITE_NAME}: life skills training for teams, campuses and young minds.`;
+  return `${SITE_NAME}: life skills training for teams, campuses and individuals.`;
 }
 
 // ---------------------------------------------------------------- articles
