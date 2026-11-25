@@ -118,7 +118,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 <section class="gw-wrap" style="padding-bottom: 100px">
   <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr))">
     <div class="gw-card" style="background: #33999b; color: #fff; border-radius: 28px; padding: 30px; display: flex; flex-direction: column; gap: 6px"><span class="gw-display" style="font-size: 56px; font-weight: 800; line-height: 1">4,000+</span><span style="font-size: 16px; font-weight: 700">students trained</span></div>
-    <div class="gw-card" style="background: #ffe885; border-radius: 28px; padding: 30px; display: flex; flex-direction: column; gap: 6px"><span class="gw-display" style="font-size: 56px; font-weight: 800; line-height: 1">10+</span><span style="font-size: 16px; font-weight: 700">campus tie-ups</span></div>
+    <div class="gw-card" style="background: #ffe885; border-radius: 28px; padding: 30px; display: flex; flex-direction: column; gap: 6px"><span class="gw-display" style="font-size: 56px; font-weight: 800; line-height: 1">6</span><span style="font-size: 16px; font-weight: 700">campus tie-ups</span></div>
     <div class="gw-card" style="background: #ffffff; border-radius: 28px; padding: 30px; display: flex; flex-direction: column; gap: 6px"><span class="gw-display" style="font-size: 56px; font-weight: 800; line-height: 1">60+</span><span style="font-size: 16px; font-weight: 700">hiring companies via our placement partners</span></div>
     <div class="gw-card" style="background: #d3eaea; border-radius: 28px; padding: 30px; display: flex; flex-direction: column; gap: 6px"><span class="gw-display" style="font-size: 56px; font-weight: 800; line-height: 1">122+</span><span style="font-size: 16px; font-weight: 700">experienced faculty</span></div>
   </div>
@@ -323,7 +323,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { fmt: 'mini', faq: 0 };
+    this.state = { fmt: 'sprint', faq: 0 };
   }
   brochure(cfg) {
     var self = this;
@@ -377,14 +377,14 @@ class Component extends DCLogic {
         about: 'Short, activity-packed workshops that spark awareness and build one skill fast. Great for orientation weeks and semester breaks.',
         covers: ['Confidence & communication', 'GD & personal interviews', 'Resume building', 'Problem solving & EI', 'Entrepreneurial thinking', 'Excel & data handling', 'Workplace etiquette'],
         from: 'I never speak up.', to: 'I can do this.' },
-      { id: 'mini', tab: 'Ace the Placement · Mini', length: '100-hour program', name: 'Ace the Placement Mini',
-        about: 'Makes students interview-ready, fast: soft skills for the workplace, domain readiness, and aptitude and logic for campus hiring tests.',
-        covers: ['Soft skills', 'Domain readiness', 'Aptitude & logic', 'Pre & post assessment'],
+      { id: 'sprint', tab: 'Final Year Sprint', length: '64 hours · up to 30 students', name: 'Final Year Sprint',
+        about: 'Gives final-year students the essential tools to perform confidently in placements, in eight focused days.',
+        covers: ['Resume & LinkedIn', 'Communication & presence', 'Aptitude & GDs', 'Domain & behavioural interviews', 'Mock interviews', 'Final placement simulation'],
         from: 'I know the answer.', to: 'I can explain, defend, and apply it.' },
-      { id: 'pro', tab: 'Ace the Placement · Pro', length: '200-hour bootcamp', name: 'Ace the Placement Pro',
-        about: 'Everything in Mini, plus leadership and influence, Excel and business tools, and professional identity building. Built for career-ready professionals.',
-        covers: ['Everything in Mini', 'Leadership & influence', 'Excel & business tools', 'Professional identity', 'LMS support'],
-        from: 'I got placed.', to: 'I can grow, adapt, and perform at work.' }
+      { id: 'bootcamp', tab: 'Placement Bootcamp', length: '30 days · up to 30 students', name: 'Placement Bootcamp',
+        about: 'An immersive journey that builds business fundamentals, domain expertise, workplace skills and problem solving, then converts them into offers.',
+        covers: ['Level 1: Foundation', 'Level 2: Domain build', 'Level 3: Simulations & interviews', 'Level 4: Placement conversion', 'Pre & post assessment'],
+        from: 'Ready on paper.', to: 'Ready in person, and placed.' }
     ];
     var cur = this.state.fmt;
     var formats = defs.map(function (d) {
@@ -407,7 +407,7 @@ class Component extends DCLogic {
         toggle: function () { self.setState({ faq: self.state.faq === i ? -1 : i }); }
       });
     });
-    return { bro: this.brochure({ title: 'Campus programs brochure', orgWord: 'institution name', orgLabel: 'Institution', orgPh: 'College or university', inside: ['PowerUP workshops, Ace the Placement Mini and Pro', 'Skill pillars, hours and outcomes', 'How we fit your academic calendar'] }), formats: formats, faqs: faqs };
+    return { bro: this.brochure({ title: 'Campus programs brochure', orgWord: 'institution name', orgLabel: 'Institution', orgPh: 'College or university', inside: ['PowerUP workshops, Final Year Sprint and Placement Bootcamp', 'Skill pillars, hours and outcomes', 'How we fit your academic calendar'] }), formats: formats, faqs: faqs };
   }
 }
 
