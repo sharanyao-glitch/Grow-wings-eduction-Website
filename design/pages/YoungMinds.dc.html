@@ -448,7 +448,10 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 .eas .lv-sec{background:#d3eaea;padding:80px 0;margin-bottom:88px}
 .eas .lv-sec h2,.eas .lv-sec .lead{text-align:center;margin-left:auto;margin-right:auto}
 .eas .lv-sec .cefr{text-align:center}
-.eas .hw-art{position:relative;width:min(100%,360px);height:170px;margin:0 auto 18px}
+.eas .hw-art{position:relative;width:min(100%,360px);margin:0 auto 14px;display:flex;justify-content:center}
+.eas .hw-jump{height:clamp(150px,26vh,230px);width:auto;display:block;transform:translateY(30px) scale(.9);opacity:0;transition:transform .6s cubic-bezier(.3,1.6,.5,1),opacity .4s ease}
+.eas .hw-sec.done .hw-jump,.eas .hw-end.on .hw-jump{transform:none;opacity:1}
+@media (prefers-reduced-motion:reduce){.eas .hw-jump{transform:none;opacity:1;transition:none}}
 .eas .hw-art-line{position:absolute;left:0;right:0;bottom:22px;height:4px;border-radius:4px;background:#33999b}
 .eas .hw-art-ph{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);width:200px;height:130px;border:0;border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-size:12.5px;font-weight:800;color:#8a9391;background:transparent}
 .eas .wl-sec{padding-top:0}
@@ -590,7 +593,7 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
         <li class="hw-card" data-i="2"><span class="hw-tag">In class</span><b>The 70:30 rule</b><p>70% of every class is speaking: role-plays, discussions and real work situations. 30% is grammar, built into the speaking.</p></li>
         <li class="hw-card" data-i="3"><span class="hw-tag lt">Outside class</span><b>Get feedback</b><p>Peers and facilitators respond, and the learning app tracks your progress.</p></li>
       </ol>
-      <div class="hw-end" id="hwend"><div class="hw-art" aria-hidden="true"><span class="hw-art-line"></span><span class="hw-art-ph"></span></div><h3 class="d">See yourself improve.</h3><p>Every loop builds on the last. 36 loops in 12 weeks.</p></div>
+      <div class="hw-end" id="hwend"><div class="hw-art"><img src="/_blob/86ba5261317cb16052faea8b938492c9" alt="A woman jumping for joy" class="hw-jump"></div><h3 class="d">See yourself improve.</h3><p>Every loop builds on the last. 36 loops in 12 weeks.</p></div>
     </div>
     </div>
   </div></div>
