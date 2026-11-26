@@ -116,10 +116,51 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
 .gw-meter span{display:block;height:100%;border-radius:999px;background:#33999b;transition:width .5s cubic-bezier(.3,1.4,.5,1)}
 .gw-share{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;border:1.5px solid #d8d4c8;background:#fff;color:#1f2a2a;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;transition:transform .2s cubic-bezier(.3,1.6,.5,1),border-color .2s ease,background .2s ease}
 .gw-share:hover{transform:translateY(-2px);border-color:#33999b;color:#1f2a2a}
+.gw-prose h2{scroll-margin-top:104px}
+/* Pull-tab contents drawer (tablet + phone) */
+.gw-pull{position:fixed;top:0;right:0;bottom:0;width:min(80vw,340px);z-index:160;transform:translateX(100%);transition:transform .45s cubic-bezier(.3,1.2,.5,1);display:none}
+.gw-pull.open{transform:translateX(0)}
+.gw-pull.shy{transform:translateX(calc(100% + 90px))}
+.gw-pull.drag{transition:none}
+.gw-pull-panel{position:absolute;inset:0;background:#fff;border-radius:24px 0 0 24px;padding:22px 16px 24px 22px;display:flex;flex-direction:column;gap:4px;overflow-y:auto;box-shadow:-24px 0 50px -30px rgba(31,42,42,.55);touch-action:pan-y}
+.gw-pull-tab{position:absolute;right:100%;bottom:96px;display:flex;align-items:center;gap:8px;background:#ffe885;color:#1f2a2a;border:none;border-radius:16px 0 0 16px;padding:11px 12px 11px 9px;font-family:inherit;font-weight:800;font-size:14px;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;box-shadow:-8px 10px 22px -14px rgba(31,42,42,.55)}
+.gw-pull-tab:active{cursor:grabbing}
+.gw-pull-grip{width:4px;height:20px;border-radius:2px;background:rgba(31,42,42,.28)}
+.gw-pull-x{width:36px;height:36px;border-radius:50%;border:none;background:#f4f3ee;color:#1f2a2a;font-size:20px;line-height:1;cursor:pointer;font-family:inherit}
+.gw-pull-list{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:2px}
+.gw-pull-list a{display:block;padding:10px 12px;border-radius:12px;font-size:15px;font-weight:700;line-height:1.35;color:#1f2a2a;border-left:3px solid transparent}
+.gw-pull-list a.done{color:#8a9494}
+.gw-pull-list a.on{background:#d3eaea;color:#257173;border-left-color:#33999b}
+.gw-scrim{position:fixed;inset:0;background:rgba(31,42,42,.42);z-index:155;opacity:0;pointer-events:none;transition:opacity .3s ease;display:none}
+.gw-scrim.open{opacity:1;pointer-events:auto}
+@media (max-width:960px){.gw-aside{display:none!important}.gw-pull,.gw-scrim{display:block}}
+@media (prefers-reduced-motion:reduce){.gw-pull{transition:none!important}}
 </style>
 </helmet>
 <div class="gw-root">
 <div class="gw-progress" ref="{{barRef}}" aria-hidden="true"></div>
+
+<!-- PULL-TAB CONTENTS (tablet + phone) -->
+<div class="gw-scrim {{pullCls}}" onClick="{{closePull}}" aria-hidden="true"></div>
+<div class="gw-pull {{pullCls}} {{shyCls}}" ref="{{pullRef}}">
+  <button type="button" class="gw-pull-tab" aria-label="{{tabLabel}}" aria-expanded="{{pullOpen}}" aria-controls="gw-pull-panel" onPointerDown="{{tabDown}}" onPointerMove="{{tabMove}}" onPointerUp="{{tabUp}}" onPointerCancel="{{tabUp}}" onClick="{{tabKey}}">
+    <span class="gw-pull-grip" aria-hidden="true"></span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></svg>
+    <span>{{pos}}</span>
+  </button>
+  <nav class="gw-pull-panel" id="gw-pull-panel" aria-label="On this page" onPointerDown="{{panDown}}" onPointerUp="{{panUp}}">
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <span class="gw-eyebrow">On this page</span>
+      <button type="button" class="gw-pull-x" aria-label="Close contents" onClick="{{closePull}}">×</button>
+    </div>
+    <div class="gw-meter" style="height: 6px; margin: 10px 0 6px"><span style="width: {{tocPct}}"></span></div>
+    <ul class="gw-pull-list">
+      <sc-for list="{{toc}}" as="t" hint-placeholder-count="8">
+        <li><a href="#{{t.id}}" class="{{t.pcls}}" onClick="{{t.go}}">{{t.label}}</a></li>
+      </sc-for>
+    </ul>
+  </nav>
+</div>
 <dc-import name="Nav" active="blog" hint-size="100%,88px"></dc-import>
 
 <!-- ============ ARTICLE HEADER ============ -->
@@ -371,6 +412,8 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.state = { checked: [], faq: 0, active: 'what-recruiters', copied: false };
+    this.state.pullOpen = false;
+    this.state.shy = true;
   }
 
   // ---- Article settings: edit these for each new post ----
@@ -513,15 +556,35 @@ class Component extends DCLogic {
           var el = document.getElementById(ids[i]);
           if (el && el.getBoundingClientRect().top < 160) current = ids[i];
         }
-        if (current !== self.state.active) self.setState({ active: current });
+        var y = window.scrollY, dy = y - (self.lastY || 0);
+        var first = document.getElementById(ids[0]);
+        var start = first ? first.getBoundingClientRect().top + y - window.innerHeight * 0.7 : 0;
+        var shy = self.state.shy;
+        if (y < start) shy = true;
+        else if (dy > 6) shy = true;
+        else if (dy < -6) shy = false;
+        if (Math.abs(dy) > 6 || y < start) self.lastY = y;
+        var next = {};
+        if (current !== self.state.active) next.active = current;
+        if (shy !== self.state.shy && !self.state.pullOpen) next.shy = shy;
+        if (Object.keys(next).length) self.setState(next);
       });
     };
+    this.onKey = function (e) { if (e.key === 'Escape' && self.state.pullOpen) self.setPull(false); };
     window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('keydown', this.onKey);
     this.onScroll();
+  }
+
+  setPull(open) {
+    if (typeof document !== 'undefined') document.documentElement.style.overflow = open ? 'hidden' : '';
+    this.setState({ pullOpen: open, shy: false });
   }
 
   componentWillUnmount() {
     if (this.onScroll) window.removeEventListener('scroll', this.onScroll);
+    if (this.onKey) window.removeEventListener('keydown', this.onKey);
+    if (typeof document !== 'undefined') document.documentElement.style.overflow = '';
   }
 
   renderVals() {
@@ -531,10 +594,56 @@ class Component extends DCLogic {
     var score = checked.length;
     var band = a.bands.filter(function (b) { return score <= b.upTo; })[0];
     var url = encodeURIComponent(a.url);
+    var ids = a.toc.map(function (t) { return t[0]; });
+    var activeIdx = Math.max(0, ids.indexOf(this.state.active));
+    var open = this.state.pullOpen;
     return {
       barRef: function (el) { self.bar = el; },
-      toc: a.toc.map(function (t) {
-        return { id: t[0], label: t[1], cls: self.state.active === t[0] ? 'on' : '' };
+      pullRef: function (el) { self.pull = el; },
+      pullOpen: open,
+      pullCls: open ? 'open' : '',
+      shyCls: !open && this.state.shy ? 'shy' : '',
+      pos: (activeIdx + 1) + '/' + ids.length,
+      tabLabel: open ? 'Close contents' : 'Open contents, section ' + (activeIdx + 1) + ' of ' + ids.length,
+      tocPct: Math.round(((activeIdx + 1) / ids.length) * 100) + '%',
+      closePull: function () { self.setPull(false); },
+      tabKey: function (e) { if (e && e.detail === 0) self.setPull(!self.state.pullOpen); },
+      tabDown: function (e) {
+        if (!self.pull) return;
+        self.drag = { x: e.clientX, dx: 0, moved: false, w: self.pull.offsetWidth };
+        try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {}
+      },
+      tabMove: function (e) {
+        var d = self.drag; if (!d) return;
+        d.dx = e.clientX - d.x;
+        if (Math.abs(d.dx) > 6) d.moved = true;
+        if (!d.moved) return;
+        var base = self.state.pullOpen ? 0 : d.w;
+        var t = Math.max(0, Math.min(d.w, base + d.dx));
+        self.pull.classList.add('drag');
+        self.pull.style.transform = 'translateX(' + t + 'px)';
+      },
+      tabUp: function () {
+        var d = self.drag; if (!d) return;
+        self.drag = null;
+        self.pull.classList.remove('drag');
+        self.pull.style.transform = '';
+        if (!d.moved) { self.setPull(!self.state.pullOpen); return; }
+        if (!self.state.pullOpen && d.dx < -40) self.setPull(true);
+        else if (self.state.pullOpen && d.dx > 60) self.setPull(false);
+      },
+      panDown: function (e) { self.swipe = { x: e.clientX, y: e.clientY }; },
+      panUp: function (e) {
+        var s = self.swipe; self.swipe = null; if (!s) return;
+        var dx = e.clientX - s.x, dy = e.clientY - s.y;
+        if (dx > 70 && Math.abs(dx) > Math.abs(dy)) self.setPull(false);
+      },
+      toc: a.toc.map(function (t, i) {
+        return {
+          id: t[0], label: t[1], cls: self.state.active === t[0] ? 'on' : '',
+          pcls: i === activeIdx ? 'on' : (i < activeIdx ? 'done' : ''),
+          go: function () { self.setPull(false); }
+        };
       }),
       checks: a.checks.map(function (label, i) {
         var on = checked.indexOf(i) >= 0;

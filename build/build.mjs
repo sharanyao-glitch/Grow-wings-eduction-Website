@@ -74,6 +74,13 @@ const PAGES = {
     priority: 0.6,
     article: { published: '2026-11-25', section: 'Mindset', image: '5faba6bb5e3137c18b093e588c024695' },
   },
+  BlogCefrLevels: {
+    file: 'blog/cefr-levels.html',
+    title: 'From A1 to C2: how to climb every CEFR level in English',
+    description: 'A level-by-level guide to moving up the CEFR scale in English: what changes from A1 to C2, what to practise, and how to check your level free with EF SET.',
+    priority: 0.6,
+    article: { published: '2026-11-26', section: 'Communication', image: '0f972a7e8e3c92106dc970793209b15d' },
+  },
 };
 
 // Clean URLs (no .html): Vercel serves /corporates from corporates.html (cleanUrls in vercel.json).

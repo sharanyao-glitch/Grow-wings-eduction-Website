@@ -140,6 +140,15 @@
       "w": 1440,
       "x": 18880,
       "y": 0
+    },
+    "BlogCefrLevels.dc.html": {
+      "expand": "fill",
+      "h": 9000,
+      "is_interactive": true,
+      "title": "Blog: CEFR levels",
+      "w": 1440,
+      "x": 20560,
+      "y": 0
     }
   },
   "createdOnFiles": {
