@@ -30,7 +30,7 @@ const PAGES = {
   Corporates: { file: 'corporates.html', title: 'Corporate training programs', priority: 0.9 },
   Campus: { file: 'campus.html', title: 'Campus programs', priority: 0.9 },
   YoungMinds: {
-    file: 'skills-irl.html', title: 'English as a Skill | SkillsIRL', priority: 0.9,
+    file: 'skills-irl/spoken-english.html', title: 'English as a Skill | SkillsIRL', priority: 0.9,
     description: 'English as a Skill: a 12-week live online spoken English course for working professionals. Small batches by level, three Zoom sessions a week, ₹9,500 + GST. Join the waitlist.',
   },
   CaseStudies: { file: 'case-studies.html', title: 'Case studies', priority: 0.7 },
