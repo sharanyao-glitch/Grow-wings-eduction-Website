@@ -29,7 +29,10 @@ const PAGES = {
   Main: { file: 'index.html', title: 'Grow Wings | Life skills training for teams, campuses and individuals', priority: 1.0 },
   Corporates: { file: 'corporates.html', title: 'Corporate training programs', priority: 0.9 },
   Campus: { file: 'campus.html', title: 'Campus programs', priority: 0.9 },
-  YoungMinds: { file: 'skills-irl.html', title: 'SkillsIRL', priority: 0.9 },
+  YoungMinds: {
+    file: 'skills-irl.html', title: 'English as a Skill | SkillsIRL', priority: 0.9,
+    description: 'English as a Skill: a 12-week live online spoken English course for working professionals. Small batches by level, three Zoom sessions a week, ₹9,500 + GST. Join the waitlist.',
+  },
   CaseStudies: { file: 'case-studies.html', title: 'Case studies', priority: 0.7 },
   Blog: {
     file: 'blog.html', title: 'Blog', priority: 0.6,
@@ -273,6 +276,7 @@ for (const f of Object.values(images)) {
 }
 fs.copyFileSync(path.join(ROOT, 'node_modules', 'preact', 'dist', 'preact.min.js'), path.join(OUT, 'assets', 'js', 'preact.min.js'));
 fs.copyFileSync(path.join(SRC, 'dc-runtime.js'), path.join(OUT, 'assets', 'js', 'dc-runtime.js'));
+fs.copyFileSync(path.join(SRC, 'eas.js'), path.join(OUT, 'assets', 'js', 'eas.js'));
 fs.copyFileSync(path.join(SRC, 'og-image.png'), path.join(OUT, OG_IMAGE.file));
 
 const favicon = '/assets/img/ebc6bd594dc2b99c923776fd8ef47649.png';
