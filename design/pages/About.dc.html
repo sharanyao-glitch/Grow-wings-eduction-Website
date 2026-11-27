@@ -157,10 +157,10 @@ a{color:#257173;text-decoration:none}a:hover{color:#1f2a2a;text-decoration:none}
   </div>
   <div style="display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr))">
     <sc-for list="{{team}}" as="t" hint-placeholder-count="4">
-      <div class="gw-flip" tabindex="0" style="height: 460px; outline: none">
+      <div class="gw-flip" tabindex="0" style="height: 510px; outline: none">
         <div class="gw-flip-in">
           <div class="gw-face" style="background: #2f3b3b; display: flex; flex-direction: column">
-            <img src="{{t.img}}" alt="Portrait of {{t.name}}" style="width: 100%; height: 320px; object-fit: cover; display: block">
+            <img src="{{t.img}}" alt="Portrait of {{t.name}}" style="width: 100%; height: 360px; object-fit: cover; display: block">
             <span style="background: {{t.color}}; flex: 1; padding: 20px 22px; display: flex; flex-direction: column; gap: 4px">
               <span class="gw-display" style="font-size: 24px; font-weight: 800">{{t.name}}</span>
               <span style="font-size: 14px; font-weight: 800">{{t.role}}</span>
@@ -203,21 +203,21 @@ class Component extends DCLogic {
     var industries = names.concat(names).map(function (n, i) { return { label: n, bg: tints[i % 4] }; });
     var team = [
       { name: 'Dr. Poonam Ojha', role: 'Behavioural Coach', color: '#d3eaea', img: '/_blob/43ef85a338077b41a6a5531866f11fcf',
-        cred: 'ACC-certified coach · PhD in English · 25+ years',
-        bio: 'Specialises in communication and emotional intelligence. Has delivered programs for Ernst & Young, Tyson Foods, Karle Infra and Neebal Technologies.',
-        fun: 'Known for advice that changes how people see work, life and leadership.' },
+        cred: 'PCC-certified coach · PhD in English · 25+ years of experience',
+        bio: 'Specialist in communication and emotional intelligence, with programs delivered for Ernst & Young, Tyson Foods, Karle Infra, Neebal Technologies and more.',
+        fun: 'Poonam has a way of dropping “wisdom bombs”: advice you didn’t know you needed, but that instantly changes how you view work, life or leadership.' },
       { name: 'Sharanya Ojha', role: 'Soft Skills Trainer & Instructional Designer', color: '#fff6cc', img: '/_blob/8ff399bd4ae1324b325f02ca5dafc79d',
         cred: 'Certified Learning Consultant',
-        bio: 'Designed fluency modules for EY, trained 800+ government school teachers with TRTI Maharashtra, and built campus-to-corporate journeys for ICFAI and Tyson Foods.',
-        fun: 'Turns passing ideas into training games, fast.' },
+        bio: 'Builds trainings that transform, not just teach. Designed fluency modules for EY, trained 800+ government school teachers (TRTI Maharashtra), and crafted campus-to-corporate journeys for ICFAI and Tyson Foods.',
+        fun: 'With a whiteboard, 5 minutes and a strong coffee in hand, she can transform any passing thought into a full-blown training game.' },
       { name: 'Kritika Singh', role: 'Content Strategist & Soft Skills Trainer', color: '#d3eaea', img: '/_blob/f31330d3551b9fb8f3c641465b8aa0af',
-        cred: 'Practice-driven learning',
-        bio: 'Has run sessions for freshers at EY, retired professionals at Bank of Baroda and trans youth at PeriFerry, tailoring each to its learning goals.',
-        fun: 'Turns random ideas into engaging content.' },
-      { name: 'Shreny Mutha', role: 'Trainer Network Lead & Facilitator', color: '#fff6cc', img: '/_blob/538c44d1c265a5e86433d0ebc87f2f9c',
+        cred: 'Immersive, practice-driven learning',
+        bio: 'Specialist in compelling content creation, with a strong background in academia and industry. Delivered sessions for freshers at EY, retired professionals at Bank of Baroda, trans youth at Periferry and more, helping each group meet its learning objectives.',
+        fun: 'Can take the most random idea and turn it into blockbuster content, sometimes while sipping her Diet Coke.' },
+      { name: 'Shreny Mutha', role: 'Trainer Network Lead & Soft Skills Facilitator', color: '#fff6cc', img: '/_blob/538c44d1c265a5e86433d0ebc87f2f9c',
         cred: 'NABET certified · International SQA certified',
-        bio: 'Leads a national network of 100+ trainers and owns delivery quality, with deep experience in youth development and institution-wide programs.',
-        fun: 'A natural connector who builds collaborations quickly.' }
+        bio: 'Leads a national network of 100+ trainers, ensuring top-quality delivery across every project. Experienced in youth development, professional upskilling and institution-wide programs.',
+        fun: 'Shreny is a natural people magnet: she can spark collaborations in a room before most people have even finished their introductions.' }
     ];
     return { industries: industries, team: team };
   }
